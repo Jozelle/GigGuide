@@ -7,12 +7,15 @@ namespace GigGuide.Data.Entities
         [Key]
         public required int Id { get; set; }
 
+        [Required]
         [MaxLength(50)]
         public required string Name { get; set; }
 
+        [Required]
         [MaxLength(100)]
         public required string Address { get; set; }
 
+        [Required]
         [MaxLength(30)]
         public required string City { get; set; }
     }

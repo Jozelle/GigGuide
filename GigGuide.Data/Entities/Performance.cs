@@ -10,6 +10,12 @@ namespace GigGuide.Data.Entities
         [Required]
         public required DateTime PerformanceTime { get; set; }
 
+        [Required]
+        public required int TicketPrice { get; set; }
+
+        [Required]
+        public required int TicketsAvailable { get; set; }
+
         public int ConcertId { get; set; }
         public Concert? Concert { get; set; }
 
