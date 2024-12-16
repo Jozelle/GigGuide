@@ -18,5 +18,9 @@ namespace GigGuide.Data.Entities
         [Required]
         [MaxLength(30)]
         public required string City { get; set; }
+
+        [Required]
+        [MaxLength(30)]
+        public required string Country { get; set; }
     }
 }
