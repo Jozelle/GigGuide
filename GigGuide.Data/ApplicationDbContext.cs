@@ -209,7 +209,7 @@ namespace GigGuide.Data
                 Country = "Norway"
             };
 
-            builder.Entity<Venue>().HasData(venue1, venue2, venue3, venue4, venue5, venue6, venue7, venue8, venue9, venue10, venue11);
+            builder.Entity<Venue>().HasData(venue1, venue2, venue3, venue4, venue5, venue6, venue7, venue8, venue9, venue10, venue11, venue12);
 
             Performance performance1 = new Performance
             {
