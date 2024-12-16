@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GigGuide.Data.Repository.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,12 @@ namespace GigGuide.Data.Repository
 {
     public interface IUnitOfWork : IDisposable
     {
+        ICustomerRepository Customers { get; }
+        IConcertRepository Concerts { get; }
         IVenueRepository Venues { get; }
+        IPerformanceRepository Performances { get; }
+        IBookingRepository Bookings { get; }
+
         Task<int> Complete();
     }
 }

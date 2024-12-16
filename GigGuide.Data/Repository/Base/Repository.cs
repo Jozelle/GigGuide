@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace GigGuide.Data.Repository
+namespace GigGuide.Data.Repository.Base
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {

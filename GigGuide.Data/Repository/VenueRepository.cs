@@ -1,4 +1,6 @@
 ﻿using GigGuide.Data.Entities;
+using GigGuide.Data.Repository.Base;
+using GigGuide.Data.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

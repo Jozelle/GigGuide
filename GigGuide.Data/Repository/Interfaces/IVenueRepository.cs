@@ -1,6 +1,7 @@
 ﻿using GigGuide.Data.Entities;
+using GigGuide.Data.Repository.Base;
 
-namespace GigGuide.Data.Repository
+namespace GigGuide.Data.Repository.Interfaces
 {
     public interface IVenueRepository : IRepository<Venue>
     {
