@@ -10,11 +10,11 @@ namespace GigGuide.Data.Repository
         public PerformanceRepository(ApplicationDbContext context)
         : base(context)
         { }
-        public async Task<bool> DoesItemExist(string id)
+        public async Task<bool> DoesItemExist(int id)
         {
             return await DbContext.Performances.FindAsync(id) != null;
         }
-        public async Task<Performance?> Find(string id)
+        public async Task<Performance?> Find(int id)
         {
             return await DbContext.Performances.FindAsync(id);
             //return await DbContext.Performances.FirstOrDefaultAsync(item => item.ID == id);
@@ -33,7 +33,7 @@ namespace GigGuide.Data.Repository
                 DbContext.Performances.Update(existingPerformance);
             }
         }
-        public void Delete(string id)
+        public void Delete(int id)
         {
             Customer? customer = DbContext.Customers.Find(id);
             if (customer is not null)

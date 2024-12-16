@@ -10,11 +10,11 @@ namespace GigGuide.Data.Repository
         public CustomerRepository(ApplicationDbContext context)
         : base(context)
         { }
-        public async Task<bool> DoesItemExist(string id)
+        public async Task<bool> DoesItemExist(int id)
         {
             return await DbContext.Customers.FindAsync(id) != null;
         }
-        public async Task<Customer?> Find(string id)
+        public async Task<Customer?> Find(int id)
         {
             return await DbContext.Customers.FindAsync(id);
             //return await DbContext.Customers.FirstOrDefaultAsync(item => item.ID == id);
@@ -33,7 +33,7 @@ namespace GigGuide.Data.Repository
                 DbContext.Customers.Update(existingCustomer);
             }
         }
-        public void Delete(string id)
+        public void Delete(int id)
         {
             Customer? customer = DbContext.Customers.Find(id);
             if (customer is not null)

@@ -9,9 +9,17 @@ namespace GigGuide.API.Profiles
         public ConcertProfile()
         {
             CreateMap<Concert, ConcertDto>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id));
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Artist, opt => opt.MapFrom(src => src.Artist))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.Performances, opt => opt.MapFrom(src => src.Performances));
 
-            CreateMap<ConcertDto, Concert>();
+            CreateMap<ConcertDto, Concert>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Artist, opt => opt.MapFrom(src => src.Artist))
+                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
         }
     }
 }

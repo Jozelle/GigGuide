@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GigGuide.Data\GigGuide.Data.csproj" />
+  </ItemGroup>
+
 </Project>

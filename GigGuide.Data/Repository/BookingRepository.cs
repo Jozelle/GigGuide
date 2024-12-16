@@ -10,11 +10,11 @@ namespace GigGuide.Data.Repository
         public BookingRepository(ApplicationDbContext context)
         : base(context)
         { }
-        public async Task<bool> DoesItemExist(string id)
+        public async Task<bool> DoesItemExist(int id)
         {
             return await DbContext.Bookings.FindAsync(id) != null;
         }
-        public async Task<Booking?> Find(string id)
+        public async Task<Booking?> Find(int id)
         {
             return await DbContext.Bookings.FindAsync(id);
             //return await DbContext.Bookings.FirstOrDefaultAsync(item => item.ID == id);
@@ -31,7 +31,7 @@ namespace GigGuide.Data.Repository
                 DbContext.Bookings.Update(existingBooking);
             }
         }
-        public void Delete(string id)
+        public void Delete(int id)
         {
             Booking? booking = DbContext.Bookings.Find(id);
             if (booking is not null)

@@ -10,11 +10,11 @@ namespace GigGuide.Data.Repository
         public ConcertRepository(ApplicationDbContext context)
         : base(context)
         { }
-        public async Task<bool> DoesItemExist(string id)
+        public async Task<bool> DoesItemExist(int id)
         {
             return await DbContext.Concerts.FindAsync(id) != null;
         }
-        public async Task<Concert?> Find(string id)
+        public async Task<Concert?> Find(int id)
         {
             return await DbContext.Concerts.FindAsync(id);
             //return await DbContext.Concerts.FirstOrDefaultAsync(item => item.ID == id);
@@ -33,7 +33,7 @@ namespace GigGuide.Data.Repository
                 DbContext.Concerts.Update(existingConcert);
             }
         }
-        public void Delete(string id)
+        public void Delete(int id)
         {
             Concert? concert = DbContext.Concerts.Find(id);
             if (concert is not null)

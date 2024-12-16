@@ -5,10 +5,10 @@ namespace GigGuide.Data.Repository.Interfaces
 {
     public interface ICustomerRepository : IRepository<Customer>
     {
-        Task<bool> DoesItemExist(string id);
-        Task<Customer?> Find(string id);
+        Task<bool> DoesItemExist(int id);
+        Task<Customer?> Find(int id);
         void Update(Customer customer);
-        void Delete(string id);
+        void Delete(int id);
     }
 }
 

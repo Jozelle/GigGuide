@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\GigGuide.Data.DTO\GigGuide.Data.DTO.csproj" />
     <ProjectReference Include="..\GigGuide.Data\GigGuide.Data.csproj" />
   </ItemGroup>

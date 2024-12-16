@@ -5,10 +5,10 @@ namespace GigGuide.Data.Repository.Interfaces
 {
     public interface IConcertRepository : IRepository<Concert>
     {
-        Task<bool> DoesItemExist(string id);
-        Task<Concert?> Find(string id);
+        Task<bool> DoesItemExist(int id);
+        Task<Concert?> Find(int id);
         void Update(Concert concert);
-        void Delete(string id);
+        void Delete(int id);
     }
 }
 

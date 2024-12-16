@@ -5,10 +5,10 @@ namespace GigGuide.Data.Repository.Interfaces
 {
     public interface IPerformanceRepository : IRepository<Performance>
     {
-        Task<bool> DoesItemExist(string id);
-        Task<Performance?> Find(string id);
+        Task<bool> DoesItemExist(int id);
+        Task<Performance?> Find(int id);
         void Update(Performance performance);
-        void Delete(string id);
+        void Delete(int id);
     }
 }
 
