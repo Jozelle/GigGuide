@@ -48,6 +48,8 @@ namespace GigGuide.API.Controllers
                     ErrorCode.ItemIDInUse.ToString());
                 }
 
+                item.Id = default;
+
                 _unitOfWork.Customers.Insert(item);
                 int affectedItems = await _unitOfWork.Complete();
             }
