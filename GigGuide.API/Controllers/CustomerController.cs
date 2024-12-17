@@ -23,6 +23,13 @@ namespace GigGuide.API.Controllers
         {
             return Ok(_mapper.Map<IEnumerable<Customer>>(await _unitOfWork.Customers.All()));
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCustomer(int id)
+        {
+            return Ok(_mapper.Map<Customer>(await _unitOfWork.Customers.Find(id)));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CustomerDto dto)
         {
@@ -40,6 +47,7 @@ namespace GigGuide.API.Controllers
                     return StatusCode(StatusCodes.Status409Conflict,
                     ErrorCode.ItemIDInUse.ToString());
                 }
+
                 _unitOfWork.Customers.Insert(item);
                 int affectedItems = await _unitOfWork.Complete();
             }
@@ -49,6 +57,7 @@ namespace GigGuide.API.Controllers
             }
             return Ok(_mapper.Map<CustomerDto>(item));
         }
+
         [HttpPut]
         public async Task<IActionResult> Edit([FromBody] CustomerDto dto)
         {
@@ -76,27 +85,27 @@ namespace GigGuide.API.Controllers
             //return NoContent();
             return Ok(_mapper.Map<CustomerDto>(item));
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            Customer? item;
-            try
-            {
-                item = await _unitOfWork.Customers.Find(id);
-                if (item == null)
-                {
-                    return NotFound(ErrorCode.RecordNotFound.ToString());
-                }
-                //_todoRepository.Delete(id);
-                _unitOfWork.Customers.Delete(id);
-                int affectedItems = await _unitOfWork.Complete();
-            }
-            catch (Exception)
-            {
-                return BadRequest(ErrorCode.CouldNotDeleteItem.ToString());
-            }
-            //return NoContent();
-            return Ok(_mapper.Map<CustomerDto>(item));
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    Customer? item;
+        //    try
+        //    {
+        //        item = await _unitOfWork.Customers.Find(id);
+        //        if (item == null)
+        //        {
+        //            return NotFound(ErrorCode.RecordNotFound.ToString());
+        //        }
+        //        //_todoRepository.Delete(id);
+        //        _unitOfWork.Customers.Delete(id);
+        //        int affectedItems = await _unitOfWork.Complete();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return BadRequest(ErrorCode.CouldNotDeleteItem.ToString());
+        //    }
+        //    //return NoContent();
+        //    return Ok(_mapper.Map<CustomerDto>(item));
+        //}
     }
 }
