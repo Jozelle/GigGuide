@@ -10,5 +10,6 @@ namespace GigGuide.Data.DTO
         public string EmailAddress { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
         //public ICollection<Booking> Bookings { get; set; } = null!;
+        public string Secret { get; set; } = null!;
     }
 }
