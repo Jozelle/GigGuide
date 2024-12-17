@@ -23,6 +23,13 @@ namespace GigGuide.API.Controllers
         {
             return Ok(_mapper.Map<IEnumerable<Customer>>(await _unitOfWork.Customers.All()));
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCustomer(int id)
+        {
+            return Ok(_mapper.Map<Customer>(await _unitOfWork.Customers.Find(id)));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CustomerDto dto)
         {
@@ -49,6 +56,7 @@ namespace GigGuide.API.Controllers
             }
             return Ok(_mapper.Map<CustomerDto>(item));
         }
+
         [HttpPut]
         public async Task<IActionResult> Edit([FromBody] CustomerDto dto)
         {
