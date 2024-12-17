@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GigGuide.MAUI.Models
+namespace GigGuide.MAUI.Services
 {
-    public class Booking
+    public interface ICustomerService
     {
+        //Task<List<Customer>?> GetCustomersAsync(); ?? 
     }
 }
