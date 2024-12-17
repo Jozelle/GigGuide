@@ -85,27 +85,27 @@ namespace GigGuide.API.Controllers
             //return NoContent();
             return Ok(_mapper.Map<CustomerDto>(item));
         }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            Customer? item;
-            try
-            {
-                item = await _unitOfWork.Customers.Find(id);
-                if (item == null)
-                {
-                    return NotFound(ErrorCode.RecordNotFound.ToString());
-                }
-                //_todoRepository.Delete(id);
-                _unitOfWork.Customers.Delete(id);
-                int affectedItems = await _unitOfWork.Complete();
-            }
-            catch (Exception)
-            {
-                return BadRequest(ErrorCode.CouldNotDeleteItem.ToString());
-            }
-            //return NoContent();
-            return Ok(_mapper.Map<CustomerDto>(item));
-        }
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    Customer? item;
+        //    try
+        //    {
+        //        item = await _unitOfWork.Customers.Find(id);
+        //        if (item == null)
+        //        {
+        //            return NotFound(ErrorCode.RecordNotFound.ToString());
+        //        }
+        //        //_todoRepository.Delete(id);
+        //        _unitOfWork.Customers.Delete(id);
+        //        int affectedItems = await _unitOfWork.Complete();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return BadRequest(ErrorCode.CouldNotDeleteItem.ToString());
+        //    }
+        //    //return NoContent();
+        //    return Ok(_mapper.Map<CustomerDto>(item));
+        //}
     }
 }
