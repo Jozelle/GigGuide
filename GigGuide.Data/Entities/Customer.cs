@@ -27,6 +27,6 @@ namespace GigGuide.Data.Entities
         [MaxLength(50)]
         public required string Password { get; set; }
 
-        public ICollection<Booking> Bookings { get; set; } = [];
+        //public ICollection<Booking> Bookings { get; set; } = [];
     }
 }
