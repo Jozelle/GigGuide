@@ -47,6 +47,7 @@ namespace GigGuide.API.Controllers
                     return StatusCode(StatusCodes.Status409Conflict,
                     ErrorCode.ItemIDInUse.ToString());
                 }
+
                 _unitOfWork.Customers.Insert(item);
                 int affectedItems = await _unitOfWork.Complete();
             }
