@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GigGuide.Data.DTO", "GigGui
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GigGuide.API", "GigGuide.API\GigGuide.API.csproj", "{CDFB9A8A-E274-4DF0-8D18-DC44FE7CBA05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GigGuide.MAUI", "GigGuide.MAUI\GigGuide.MAUI.csproj", "{D3884468-2128-4D39-A110-3AD2CAAC4FF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{CDFB9A8A-E274-4DF0-8D18-DC44FE7CBA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDFB9A8A-E274-4DF0-8D18-DC44FE7CBA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDFB9A8A-E274-4DF0-8D18-DC44FE7CBA05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3884468-2128-4D39-A110-3AD2CAAC4FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3884468-2128-4D39-A110-3AD2CAAC4FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3884468-2128-4D39-A110-3AD2CAAC4FF2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D3884468-2128-4D39-A110-3AD2CAAC4FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3884468-2128-4D39-A110-3AD2CAAC4FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3884468-2128-4D39-A110-3AD2CAAC4FF2}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
