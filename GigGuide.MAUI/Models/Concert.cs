@@ -8,6 +8,6 @@ namespace GigGuide.MAUI.Models
         public string ConcertArtist { get; set; } = null!;
         public string ConcertTitle { get; set; } = null!;
         public string ConcertDescription { get; set; } = null!;
-        public ICollection<Performance> ConcertPerformances { get; set; } = null!;
+        //public ICollection<Performance> ConcertPerformances { get; set; } = null!;
     }
 }
