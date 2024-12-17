@@ -15,12 +15,12 @@ namespace GigGuide.MAUI.Profiles
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.ConcertDescription))
                 .ForMember(dest => dest.Performances, opt => opt.MapFrom(src => src.ConcertPerformances));
 
-            CreateMap<CustomerDto, Customer>()
-                .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.CustomerFirstName, opt => opt.MapFrom(src => src.FirstName))
-                .ForMember(dest => dest.CustomerLastName, opt => opt.MapFrom(src => src.LastName))
-                .ForMember(dest => dest.CustomerEmail, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dest => dest.CustomerPhone, opt => opt.MapFrom(src => src.Phone));
+            CreateMap<ConcertDto, Concert>()
+                .ForMember(dest => dest.ConcertId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.ConcertArtist, opt => opt.MapFrom(src => src.Artist))
+                .ForMember(dest => dest.ConcertTitle, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.ConcertDescription, opt => opt.MapFrom(src => src.Description))
+                .ForMember(dest => dest.ConcertPerformances, opt => opt.MapFrom(src => src.Performances));
         }
     }
 }
