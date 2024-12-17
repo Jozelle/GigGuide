@@ -20,6 +20,6 @@ namespace GigGuide.Data.Entities
         [MaxLength(500)]
         public required string Description { get; set; }
 
-        public ICollection<Performance> Performances { get; set; } = [];
+        //public ICollection<Performance> Performances { get; set; } = [];
     }
 }

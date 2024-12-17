@@ -11,9 +11,9 @@ namespace GigGuide.MAUI.Services
             _restService = restService;
         }
 
-        public async Task<List<Concert>?> GetConcertsAsync()
+        public Task<List<Concert>?> GetConcertsAsync()
         {
-            return await _restService.RefreshConcertDataAsync();
+            return _restService.RefreshConcertDataAsync();
         }
     }
 }

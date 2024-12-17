@@ -12,6 +12,6 @@ namespace GigGuide.Data.DTO
         public string Artist { get; set; } = null!;
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
-        public ICollection<PerformanceDto> Performances { get; set; } = null!;
+        //public ICollection<PerformanceDto> Performances { get; set; } = null!;
     }
 }

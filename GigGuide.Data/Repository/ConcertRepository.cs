@@ -28,7 +28,7 @@ namespace GigGuide.Data.Repository
                 existingConcert.Artist = concert.Artist;
                 existingConcert.Title = concert.Title;
                 existingConcert.Description = concert.Description;
-                existingConcert.Performances = concert.Performances;
+                //existingConcert.Performances = concert.Performances;
 
                 DbContext.Concerts.Update(existingConcert);
             }

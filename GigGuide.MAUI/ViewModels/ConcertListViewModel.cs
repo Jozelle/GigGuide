@@ -23,12 +23,12 @@ namespace GigGuide.MAUI.ViewModels
         public ConcertListViewModel(IConcertService concertService)
         {
             _concertService = concertService;
-            Hello = "Hej Carro!";
         }
 
         [RelayCommand]
         public async Task Appearing()
         {
+            Hello = "Hej Carro!";
             Concerts = new(await _concertService.GetConcertsAsync() ?? []);
         }
 

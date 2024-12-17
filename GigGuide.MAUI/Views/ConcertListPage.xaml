@@ -11,7 +11,7 @@
     </ContentPage.Behaviors>
     <ContentPage.Content>
         <StackLayout>
-            <!--<Label Text="{Binding Hello}"/>-->
+            <Label Text="{Binding Hello}"/>
             <CollectionView
                 ItemsSource="{Binding Concerts}"
                 SelectedItem="{Binding SelectedConcert, Mode=TwoWay}"
