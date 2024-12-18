@@ -11,24 +11,22 @@
     </ContentPage.Behaviors>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Hello}"/>
             <CollectionView
                 ItemsSource="{Binding Concerts}"
                 SelectedItem="{Binding SelectedConcert, Mode=TwoWay}"
                 SelectionChangedCommand="{Binding NavigateToConcertCommand}"
                 SelectionMode="Single">
                 <CollectionView.Behaviors>
-                    <behaviors:EventToCommandBehavior 
-                        Command="{Binding NavigateToConcertCommand}" 
-                        EventName="SelectionChanged" />
+                    <behaviors:EventToCommandBehavior Command="{Binding NavigateToConcertCommand}" EventName="SelectionChanged" />
                 </CollectionView.Behaviors>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Concert">
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding ConcertArtist}" />
-                            <Label Text="{Binding ConcertTitle}" />
-                            <Label Text="{Binding ConcertDescription}" />
-                        </StackLayout>
+                        <Frame>
+                            <StackLayout Padding="10">
+                                <Label FontSize="Title" Text="{Binding ConcertArtist}" />
+                                <Label FontSize="Subtitle" Text="{Binding ConcertTitle}" />
+                            </StackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
