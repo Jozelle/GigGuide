@@ -1,6 +1,4 @@
-﻿
-
-using GigGuide.MAUI.Models;
+﻿using GigGuide.MAUI.Models;
 
 namespace GigGuide.MAUI.Services
 {

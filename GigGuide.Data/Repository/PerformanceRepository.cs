@@ -1,6 +1,7 @@
 ﻿using GigGuide.Data.Entities;
 using GigGuide.Data.Repository.Base;
 using GigGuide.Data.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace GigGuide.Data.Repository
 {
@@ -19,6 +20,11 @@ namespace GigGuide.Data.Repository
             return await DbContext.Performances.FindAsync(id);
             //return await DbContext.Performances.FirstOrDefaultAsync(item => item.ID == id);
         }
+        public async Task<IEnumerable<Performance>> GetPerformancesByConcert(int id)
+        {
+            return await DbContext.Performances.Where(p => p.ConcertId == id).ToListAsync<Performance>();
+        }
+
         public void Update(Performance performance)
         {
             Performance? existingPerformance = DbContext.Performances.Find(performance.Id);
