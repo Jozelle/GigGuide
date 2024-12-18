@@ -21,12 +21,10 @@
                 </CollectionView.Behaviors>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Concert">
-                        <Frame>
-                            <StackLayout Padding="10">
-                                <Label FontSize="Title" Text="{Binding ConcertArtist}" />
-                                <Label FontSize="Subtitle" Text="{Binding ConcertTitle}" />
-                            </StackLayout>
-                        </Frame>
+                        <StackLayout Padding="10">
+                            <Label FontSize="Title" Text="{Binding ConcertArtist}" />
+                            <Label FontSize="Subtitle" Text="{Binding ConcertTitle}" />
+                        </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
