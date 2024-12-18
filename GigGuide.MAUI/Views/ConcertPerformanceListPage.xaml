@@ -3,11 +3,48 @@
     x:Class="GigGuide.MAUI.Views.ConcertPerformanceListPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:GigGuide.MAUI.Models"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="ConcertPerformanceListPage">
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Label
             HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
+            Text="{Binding Concert.ConcertArtist}"
+            VerticalOptions="Center" 
+            FontSize="Title"/>
+        <Label
+            HorizontalOptions="Center"
+            Text="{Binding Concert.ConcertTitle}"
+            VerticalOptions="Center"
+            FontSize="Subtitle"/>
+        <Label
+            HorizontalOptions="Center"
+            Text="{Binding Concert.ConcertDescription}"
+            VerticalOptions="Center"
+            FontSize="Body"/>
+        <Line/>
+
+        <StackLayout>
+            <CollectionView
+         ItemsSource="{Binding Performances}"
+         SelectedItem="{Binding SelectedPerformance, Mode=TwoWay}"
+         SelectionChangedCommand="{Binding NavigateToPerformanceCommand}"
+         SelectionMode="Single">
+                <CollectionView.Behaviors>
+                    <behaviors:EventToCommandBehavior Command="{Binding NavigateToConcertCommand}" EventName="SelectionChanged" />
+                </CollectionView.Behaviors>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Performance">
+                        <StackLayout Padding="10">
+                            <Label FontSize="Title" Text="{Binding PerformanceVenueId}" />
+                            <Label FontSize="Subtitle" Text="{Binding PerformanceTime}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

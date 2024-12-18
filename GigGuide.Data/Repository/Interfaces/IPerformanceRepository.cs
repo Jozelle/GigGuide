@@ -7,6 +7,7 @@ namespace GigGuide.Data.Repository.Interfaces
     {
         Task<bool> DoesItemExist(int id);
         Task<Performance?> Find(int id);
+        Task<IEnumerable<Performance>> GetPerformancesByConcert(int id);
         void Update(Performance performance);
         void Delete(int id);
     }

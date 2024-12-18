@@ -15,6 +15,7 @@ namespace GigGuide.MAUI.Services
         private IMapper _mapper;
 
         public List<Concert>? Concerts { get; private set; }
+        public List<Performance>? Performances { get; private set; }
 
         public RestService(IHttpsClientHandlerService service, IMapper mapper)
         {
@@ -59,9 +60,33 @@ namespace GigGuide.MAUI.Services
             }
             return Concerts;
         }
+
+        public async Task<List<Performance>?> RefreshPerformanceDataAsync(int? id)
+        {
+            Performances = new List<Performance>();
+
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Performance", id));
+            try
+            {
+                HttpResponseMessage response = await _client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    Performances = _mapper.Map<List<Performance>>
+                    (
+                    JsonSerializer.Deserialize<List<PerformanceDto>>(content, _serializerOptions)
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+            return Performances;
+        }
         public async Task SaveBookingAsync(Booking item, bool isNewItem = false)
         {
-            Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Booking", string.Empty));
             try
             {
                 string json = JsonSerializer.Serialize<ConcertDto>(_mapper.Map<ConcertDto>(item),
@@ -73,7 +98,7 @@ namespace GigGuide.MAUI.Services
                 else
                     response = await _client.PutAsync(uri, content);
                 if (response.IsSuccessStatusCode)
-                    Debug.WriteLine(@"\tTodoItem successfully saved.");
+                    Debug.WriteLine(@"\Booking successfully saved.");
             }
             catch (Exception ex)
             {
@@ -82,12 +107,12 @@ namespace GigGuide.MAUI.Services
         }
         public async Task DeleteBookingAsync(string id)
         {
-            Uri uri = new Uri(string.Format(Constants.RestUrl, id));
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Booking", id));
             try
             {
                 HttpResponseMessage response = await _client.DeleteAsync(uri);
                 if (response.IsSuccessStatusCode)
-                    Debug.WriteLine(@"\tTodoItem successfully deleted.");
+                    Debug.WriteLine(@"\tBooking successfully deleted.");
             }
             catch (Exception ex)
             {
