@@ -1,6 +1,6 @@
-@GigGuide.API_HostAddress = http://localhost:5077
+@GigGuide.API_HostAddress = https://localhost:5001
 
-GET {{GigGuide.API_HostAddress}}/weatherforecast/
+GET {{GigGuide.API_HostAddress}}/api/concerts
 Accept: application/json
 
 ###

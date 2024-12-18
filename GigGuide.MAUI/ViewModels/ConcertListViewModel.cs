@@ -17,18 +17,14 @@ namespace GigGuide.MAUI.ViewModels
         [ObservableProperty]
         private Concert? selectedConcert;
 
-        [ObservableProperty]
-        private string hello;
-
         public ConcertListViewModel(IConcertService concertService)
         {
-            _concertService = concertService;
+            _concertService = concertService; 
         }
 
         [RelayCommand]
         public async Task Appearing()
         {
-            Hello = "Hej Carro!";
             Concerts = new(await _concertService.GetConcertsAsync() ?? []);
         }
 

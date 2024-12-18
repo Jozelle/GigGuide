@@ -40,7 +40,7 @@ namespace GigGuide.MAUI.Services
         {
             Concerts = new List<Concert>();
 
-            Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Concert", string.Empty));
             try
             {
                 HttpResponseMessage response = await _client.GetAsync(uri);

@@ -18,6 +18,6 @@ namespace GigGuide.MAUI
             : "localhost";
         public static string Scheme = "https"; // or http
         public static string Port = "5001"; // or 5000
-        public static string RestUrl = $"{Scheme}://{LocalhostUrl}:{Port}/api/todoitems/{{0}}";
+        public static string RestUrl = $"{Scheme}://{LocalhostUrl}:{Port}/api/{{0}}/{{1}}";
     }
 }
