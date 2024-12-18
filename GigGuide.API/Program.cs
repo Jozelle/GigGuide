@@ -13,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ApplicationDbContext>(
+    //options => options.UseSqlServer(builder.Configuration.GetConnectionString("GigGuideRoger"))
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("GigGuide"))
 );
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
