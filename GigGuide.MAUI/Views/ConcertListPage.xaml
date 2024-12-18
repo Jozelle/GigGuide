@@ -11,16 +11,14 @@
     </ContentPage.Behaviors>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding Hello}"/>
+            <Label Text="{Binding Hello}" />
             <CollectionView
                 ItemsSource="{Binding Concerts}"
                 SelectedItem="{Binding SelectedConcert, Mode=TwoWay}"
                 SelectionChangedCommand="{Binding NavigateToConcertCommand}"
                 SelectionMode="Single">
                 <CollectionView.Behaviors>
-                    <behaviors:EventToCommandBehavior 
-                        Command="{Binding NavigateToConcertCommand}" 
-                        EventName="SelectionChanged" />
+                    <behaviors:EventToCommandBehavior Command="{Binding NavigateToConcertCommand}" EventName="SelectionChanged" />
                 </CollectionView.Behaviors>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Concert">
