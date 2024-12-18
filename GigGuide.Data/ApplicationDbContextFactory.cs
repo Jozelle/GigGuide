@@ -13,6 +13,7 @@ namespace GigGuide.Data
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json").Build();
 
+            //var connectionString = builder.GetConnectionString("GigGuideRoger");
             var connectionString = builder.GetConnectionString("GigGuide");
 
             if (string.IsNullOrEmpty(connectionString))
