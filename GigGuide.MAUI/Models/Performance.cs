@@ -8,5 +8,8 @@
         public int? PerformanceTicketsAvailable { get; set; } = null!;
         public int? PerformanceConcertId { get; set; } = null!;
         public int? PerformanceVenueId { get; set; } = null!;
+        public Venue? PerformanceVenue { get; set; } = null!;
+
+        public string PerformanceLocation => $"{PerformanceVenue?.VenueName}, {PerformanceVenue?.VenueCity}, {PerformanceVenue?.VenueCountry}";
     }
 }

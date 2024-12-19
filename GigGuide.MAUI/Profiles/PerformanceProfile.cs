@@ -15,6 +15,7 @@ namespace GigGuide.MAUI.Profiles
                 .ForMember(dest => dest.TicketsAvailable, opt => opt.MapFrom(src => src.PerformanceTicketsAvailable))
                 .ForMember(dest => dest.ConcertId, opt => opt.MapFrom(src => src.PerformanceConcertId))
                 .ForMember(dest => dest.VenueId, opt => opt.MapFrom(src => src.PerformanceVenueId));
+            
 
             CreateMap<PerformanceDto, Performance>()
                 .ForMember(dest => dest.PerformanceId, opt => opt.MapFrom(src => src.Id))
@@ -22,7 +23,8 @@ namespace GigGuide.MAUI.Profiles
                 .ForMember(dest => dest.PerformanceTicketPrice, opt => opt.MapFrom(src => src.TicketPrice))
                 .ForMember(dest => dest.PerformanceTicketsAvailable, opt => opt.MapFrom(src => src.TicketsAvailable))
                 .ForMember(dest => dest.PerformanceConcertId, opt => opt.MapFrom(src => src.ConcertId))
-                .ForMember(dest => dest.PerformanceVenueId, opt => opt.MapFrom(src => src.VenueId));
+                .ForMember(dest => dest.PerformanceVenueId, opt => opt.MapFrom(src => src.VenueId))
+                .ForMember(dest => dest.PerformanceVenue, opt => opt.MapFrom(src => src.Venue));
         }
     }
 }
