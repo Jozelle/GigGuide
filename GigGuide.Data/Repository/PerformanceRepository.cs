@@ -22,7 +22,9 @@ namespace GigGuide.Data.Repository
         }
         public async Task<IEnumerable<Performance>> GetPerformancesByConcert(int id)
         {
-            return await DbContext.Performances.Where(p => p.ConcertId == id).ToListAsync<Performance>();
+            return await DbContext.Performances.Where(p => p.ConcertId == id)
+                .Include(p => p.Venue)
+                .ToListAsync<Performance>();
         }
 
         public void Update(Performance performance)
