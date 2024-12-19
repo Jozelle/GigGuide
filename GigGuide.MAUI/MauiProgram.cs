@@ -36,10 +36,12 @@ namespace GigGuide.MAUI
             // Pages
             builder.Services.AddSingleton<ConcertListPage>();
             builder.Services.AddTransient<ConcertPerformanceListPage>();
+            builder.Services.AddTransient<BookingPage>();
 
             // ViewModels
             builder.Services.AddSingleton<ConcertListViewModel>();
             builder.Services.AddTransient<ConcertPerformanceListViewModel>();
+            builder.Services.AddTransient<BookingViewModel>();
 
             return builder.Build();
         }
