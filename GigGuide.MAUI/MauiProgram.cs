@@ -33,7 +33,6 @@ namespace GigGuide.MAUI
             builder.Services.AddSingleton<IBookingService, BookingService>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            //builder.Services.AddAutoMapper(typeof(ConcertProfile));
 
             // Pages
             builder.Services.AddSingleton<ConcertListPage>();
