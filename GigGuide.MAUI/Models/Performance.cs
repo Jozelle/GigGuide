@@ -2,13 +2,13 @@
 {
     public class Performance
     {
-        public int? PerformanceId { get; set; } = null!;
+        public int PerformanceId { get; set; }
         public DateTime? PerformanceTime { get; set; } = null!;
-        public int? PerformanceTicketPrice { get; set; } = null!;
-        public int? PerformanceTicketsAvailable { get; set; } = null!;
-        public int? PerformanceConcertId { get; set; } = null!;
+        public int PerformanceTicketPrice { get; set; }
+        public int PerformanceTicketsAvailable { get; set; }
+        public int PerformanceConcertId { get; set; }
         public Concert? PerformanceConcert { get; set; } = null!;
-        public int? PerformanceVenueId { get; set; } = null!;
+        public int PerformanceVenueId { get; set; }
         public Venue? PerformanceVenue { get; set; } = null!;
 
         public string PerformanceLocation => $"{PerformanceVenue?.VenueName}, {PerformanceVenue?.VenueCity}, {PerformanceVenue?.VenueCountry}";

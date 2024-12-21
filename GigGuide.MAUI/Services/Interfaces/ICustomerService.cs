@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GigGuide.MAUI.Models;
 
 namespace GigGuide.MAUI.Services.Interfaces
 {
     public interface ICustomerService
     {
-        //Task<List<Customer>?> GetCustomersAsync(); ?? 
+        Customer? loggedInCustomer { get; set; }
     }
 }

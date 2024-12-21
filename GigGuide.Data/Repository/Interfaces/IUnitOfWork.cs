@@ -1,11 +1,10 @@
-﻿using GigGuide.Data.Repository.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GigGuide.Data.Repository
+namespace GigGuide.Data.Repository.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
