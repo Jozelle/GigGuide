@@ -1,4 +1,5 @@
 ﻿using GigGuide.MAUI.Models;
+using GigGuide.MAUI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GigGuide.Data.DTO;
 using GigGuide.MAUI.Models;
+using GigGuide.MAUI.Services.Interfaces;
 using System.Diagnostics;
 using System.Text;
 using System.Text.Json;

@@ -23,6 +23,7 @@ namespace GigGuide.MAUI.Profiles
                 .ForMember(dest => dest.PerformanceTicketPrice, opt => opt.MapFrom(src => src.TicketPrice))
                 .ForMember(dest => dest.PerformanceTicketsAvailable, opt => opt.MapFrom(src => src.TicketsAvailable))
                 .ForMember(dest => dest.PerformanceConcertId, opt => opt.MapFrom(src => src.ConcertId))
+                .ForMember(dest => dest.PerformanceConcert, opt => opt.MapFrom(src => src.Concert))
                 .ForMember(dest => dest.PerformanceVenueId, opt => opt.MapFrom(src => src.VenueId))
                 .ForMember(dest => dest.PerformanceVenue, opt => opt.MapFrom(src => src.Venue));
         }

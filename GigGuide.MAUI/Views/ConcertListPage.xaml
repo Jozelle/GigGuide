@@ -14,7 +14,6 @@
             <CollectionView
                 ItemsSource="{Binding Concerts}"
                 SelectedItem="{Binding SelectedConcert, Mode=TwoWay}"
-                SelectionChangedCommand="{Binding NavigateToConcertCommand}"
                 SelectionMode="Single">
                 <CollectionView.Behaviors>
                     <behaviors:EventToCommandBehavior Command="{Binding NavigateToConcertCommand}" EventName="SelectionChanged" />
