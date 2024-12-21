@@ -1,6 +1,6 @@
 ﻿using GigGuide.MAUI.Models;
 
-namespace GigGuide.MAUI.Services
+namespace GigGuide.MAUI.Services.Interfaces
 {
     public interface IRestService
     {

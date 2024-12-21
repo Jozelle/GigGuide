@@ -7,6 +7,7 @@
         public int? TicketPrice { get; set; } = null!;
         public int? TicketsAvailable { get; set; } = null!;
         public int? ConcertId { get; set; } = null!;
+        public ConcertDto? Concert { get; set; } = null!;
         public int? VenueId { get; set; } = null!;
         public VenueDto? Venue { get; set; } = null!;
     }

@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using GigGuide.MAUI.Services;
+using GigGuide.MAUI.Services.Interfaces;
 
 namespace GigGuide.MAUI.ViewModels
 {
