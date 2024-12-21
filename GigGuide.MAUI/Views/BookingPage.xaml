@@ -23,7 +23,7 @@
         <Label
             FontSize="Body"
             HorizontalOptions="Center"
-            Text="{Binding Performance.PerformanceConcert.ConcertDescription}"
+            Text="{Binding Performance.PerformanceTime}"
             VerticalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

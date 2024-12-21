@@ -12,21 +12,24 @@ namespace GigGuide.MAUI.ViewModels
     {
         private IBookingService _bookingService;
 
+        [ObservableProperty]
         private Performance performance;
 
         [ObservableProperty]
         private int quantity = 1;
 
+        [ObservableProperty]
+        private string test;
+
         public BookingViewModel(IBookingService bookingService)
         {
             _bookingService = bookingService;
-
         }
 
         [RelayCommand]
         public async Task Appearing()
         {
-            //Vet inte om vi behöver något här? 
+            // ?? 
         }
     }
 }

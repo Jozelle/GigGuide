@@ -4,6 +4,7 @@ using GigGuide.MAUI.Models;
 using GigGuide.MAUI.Services.Interfaces;
 using System.Collections.ObjectModel;
 
+
 namespace GigGuide.MAUI.ViewModels
 {
     [ObservableObject]
