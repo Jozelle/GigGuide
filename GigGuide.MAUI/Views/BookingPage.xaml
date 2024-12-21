@@ -25,5 +25,26 @@
             HorizontalOptions="Center"
             Text="{Binding Performance.PerformanceTime}"
             VerticalOptions="Center" />
+
+        <!--  Plats för karta  -->
+
+        <Stepper
+            x:Name="_stepper"
+            HorizontalOptions="Center"
+            Increment="1"
+            Maximum="10"
+            Minimum="0"
+            Value="{Binding Quantity, Mode=TwoWay}">
+            <Stepper.Behaviors>
+                <behaviors:EventToCommandBehavior Command="{Binding StepperValueChangedCommand}" EventName="ValueChanged" />
+            </Stepper.Behaviors>
+        </Stepper>
+        <Label
+            HorizontalOptions="Center"
+            Text="{Binding Source={x:Reference _stepper}, Path=Value}"
+            VerticalOptions="Center" />
+
+
+
     </VerticalStackLayout>
 </ContentPage>

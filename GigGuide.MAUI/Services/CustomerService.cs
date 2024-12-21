@@ -1,14 +1,18 @@
-﻿using GigGuide.MAUI.Services.Interfaces;
+﻿using GigGuide.MAUI.Models;
+using GigGuide.MAUI.Services.Interfaces;
 
 namespace GigGuide.MAUI.Services
 {
     public class CustomerService : ICustomerService
     {
         IRestService _restService;
+
+        public Customer? loggedInCustomer { get; set; }
         public CustomerService(IRestService restService)
         {
             _restService = restService;
         }
+
         //public async Task<List<Customer>?> GetCustomersAsync()
         //{
         //    return await _restService.RefreshCustomerDataAsync();

@@ -11,25 +11,60 @@ namespace GigGuide.MAUI.ViewModels
     public partial class BookingViewModel
     {
         private IBookingService _bookingService;
+        private ICustomerService _customerService;
 
         [ObservableProperty]
         private Performance performance;
 
         [ObservableProperty]
-        private int quantity = 1;
+        private int? quantity = 0;
 
         [ObservableProperty]
-        private string test;
+        private Booking? booking;
 
-        public BookingViewModel(IBookingService bookingService)
+        public BookingViewModel(IBookingService bookingService, ICustomerService customerService)
         {
             _bookingService = bookingService;
+            _customerService = customerService;
         }
 
         [RelayCommand]
         public async Task Appearing()
         {
-            // ?? 
+            // Hämta bokning för performance och "current customer"
+            if (_customerService.loggedInCustomer != null )
+            {
+                Booking = await _bookingService.GetBookingByPerformanceAndCustomerAsync(Performance.PerformanceId, (int)_customerService.loggedInCustomer.CustomerId);
+                if (Booking == null)
+                {
+                    Booking = new Booking
+                    {
+                        BookingId = default,
+                        BookingQuantity = 0,
+                        BookingCustomerId = (int)_customerService.loggedInCustomer.CustomerId,
+                        BookingPerformanceId = Performance.PerformanceId
+                    };
+                }
+              
+                Quantity = Booking.BookingQuantity;
+            }
+            else
+            {
+                //Be användaren att logga in
+            }
+        }
+
+        [RelayCommand]
+        public async Task StepperValueChanged()
+        {
+            if (Quantity < 1)
+            {
+                //Delete booking
+            }
+            else
+            {
+                //Update booking
+            }
         }
     }
 }

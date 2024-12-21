@@ -35,5 +35,10 @@ namespace GigGuide.MAUI.Services
         {
             throw new NotImplementedException();
         }
+
+        public Task<Booking?> GetBookingByPerformanceAndCustomerAsync(int performanceId, int customerId)
+        {
+            return _restService.GetBookingByPerformanceAndCustomerAsync(performanceId, customerId);
+        }
     }
 }

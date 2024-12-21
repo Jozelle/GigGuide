@@ -13,5 +13,6 @@ namespace GigGuide.MAUI.Services.Interfaces
         Task<List<Booking>?> GetBookingsByCustomerAsync(int customerId);
         Task<List<Booking>?> GetBookingsByPerformanceAsync(int performanceId);
         Task<Booking?> GetBookingAsync(int bookingId);
+        Task<Booking?> GetBookingByPerformanceAndCustomerAsync(int performanceId, int customerId);
     }
 }

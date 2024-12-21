@@ -28,6 +28,7 @@ namespace GigGuide.MAUI
             // Services
             builder.Services.AddSingleton<IHttpsClientHandlerService, HttpsClientHandlerService>();
             builder.Services.AddSingleton<IRestService, RestService>();
+            builder.Services.AddSingleton<ICustomerService, CustomerService>();
             builder.Services.AddSingleton<IConcertService, ConcertService>();
             builder.Services.AddSingleton<IPerformanceService, PerformanceService>();
             builder.Services.AddSingleton<IBookingService, BookingService>();
