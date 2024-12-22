@@ -12,5 +12,8 @@ namespace GigGuide.MAUI.Models
         public int? BookingQuantity { get; set; } = null!;
         public int? BookingPerformanceId { get; set; } = null!;
         public int? BookingCustomerId { get; set; } = null!;
+
+        public Customer Customer { get; set; } = null!;
+        public Performance Performance { get; set; } = null!;
     }
 }
