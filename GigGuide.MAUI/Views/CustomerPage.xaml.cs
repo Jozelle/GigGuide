@@ -1,15 +1,12 @@
-
 using GigGuide.MAUI.ViewModels;
 
 namespace GigGuide.MAUI.Views;
 
-public partial class BookingPage : ContentPage
+public partial class CustomerPage : ContentPage
 {
-
-	public BookingPage(BookingViewModel viewModel)
+	public CustomerPage(CustomerViewModel viewModel)
 	{
 		InitializeComponent();
         BindingContext = viewModel;
     }
-
 }
