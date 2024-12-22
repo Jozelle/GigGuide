@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="GigGuide.MAUI.Views.BookingPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:models="clr-namespace:GigGuide.MAUI.Models"
+    Title="Booking">
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+    <VerticalStackLayout>
+        <Label
+            FontSize="Title"
+            HorizontalOptions="Center"
+            Text="{Binding Performance.PerformanceConcert.ConcertArtist}"
+            VerticalOptions="Center" />
+        <Label
+            FontSize="Subtitle"
+            HorizontalOptions="Center"
+            Text="{Binding Performance.PerformanceConcert.ConcertTitle}"
+            VerticalOptions="Center" />
+        <Label
+            FontSize="Body"
+            HorizontalOptions="Center"
+            Text="{Binding Performance.PerformanceTime}"
+            VerticalOptions="Center" />
+
+        <!--  Plats för karta  -->
+
+        <Stepper
+            x:Name="_stepper"
+            HorizontalOptions="Center"
+            Increment="1"
+            Maximum="10"
+            Minimum="0"
+            Value="{Binding Quantity, Mode=TwoWay}">
+            <Stepper.Behaviors>
+                <behaviors:EventToCommandBehavior Command="{Binding StepperValueChangedCommand}" EventName="ValueChanged" />
+            </Stepper.Behaviors>
+        </Stepper>
+        <Label
+            HorizontalOptions="Center"
+            Text="{Binding Source={x:Reference _stepper}, Path=Value}"
+            VerticalOptions="Center" />
+
+
+
+    </VerticalStackLayout>
+</ContentPage>
