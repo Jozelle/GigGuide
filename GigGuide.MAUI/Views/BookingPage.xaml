@@ -44,5 +44,13 @@
             HorizontalOptions="Center"
             Text="{Binding Source={x:Reference _stepper}, Path=Value}"
             VerticalOptions="Center" />
+        
+        <!-- Button -->
+        <Button
+            Text="Confirm Booking"
+            Command="{Binding ConfirmBookingCommand}"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            Margin="20" />
     </VerticalStackLayout>
 </ContentPage>

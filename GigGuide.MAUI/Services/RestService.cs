@@ -108,25 +108,63 @@ namespace GigGuide.MAUI.Services
             }
             return booking;
         }
-        public async Task SaveBookingAsync(Booking item, bool isNewItem = false)
+        //public async Task SaveBookingAsync(Booking item, bool isNewItem = false)
+        //{
+        //    Uri uri = new Uri(string.Format(Constants.RestUrl, "Booking", string.Empty));
+        //    try
+        //    {
+        //        string json = JsonSerializer.Serialize<ConcertDto>(_mapper.Map<ConcertDto>(item),
+        //        _serializerOptions);
+        //        StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+        //        HttpResponseMessage response = null!;
+        //        if (isNewItem)
+        //            response = await _client.PostAsync(uri, content);
+        //        else
+        //            response = await _client.PutAsync(uri, content);
+        //        if (response.IsSuccessStatusCode)
+        //            Debug.WriteLine(@"\Booking successfully saved.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine(@"\tERROR {0}", ex.Message);
+        //    }
+        //}
+
+        public async Task SaveBookingAsync(Booking booking, bool isNewItem = true)
         {
             Uri uri = new Uri(string.Format(Constants.RestUrl, "Booking", string.Empty));
+
             try
             {
-                string json = JsonSerializer.Serialize<ConcertDto>(_mapper.Map<ConcertDto>(item),
-                _serializerOptions);
+                // Assuming you have a BookingDto class for the API
+                string json = JsonSerializer.Serialize<BookingDto>(_mapper.Map<BookingDto>(booking), _serializerOptions);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = null!;
+
+                HttpResponseMessage response;
                 if (isNewItem)
+                {
+                    // Use POST for new bookings
                     response = await _client.PostAsync(uri, content);
+                }
                 else
+                {
+                    // Use PUT for updating existing bookings, include the booking ID in the URI if necessary
+                    uri = new Uri(string.Format(Constants.RestUrl, "Booking", booking.BookingId)); // Adjust if your API expects the ID in the URL
                     response = await _client.PutAsync(uri, content);
+                }
+
                 if (response.IsSuccessStatusCode)
+                {
                     Debug.WriteLine(@"\Booking successfully saved.");
+                }
+                else
+                {
+                    Debug.WriteLine($"\tERROR: {response.StatusCode} - {response.ReasonPhrase}");
+                }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+                Debug.WriteLine($"\tERROR: {ex.Message}");
             }
         }
         public async Task DeleteBookingAsync(string id)
