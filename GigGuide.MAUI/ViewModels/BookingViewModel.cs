@@ -72,14 +72,13 @@ namespace GigGuide.MAUI.ViewModels
         {
             if (_customerService.loggedInCustomer != null)
             {
-                // Create or update the booking object with the current details
-                Booking.BookingQuantity = (int)Quantity; // Update the quantity
-                Booking.BookingCustomerId = (int)_customerService.loggedInCustomer.CustomerId; // Ensure customer ID is set
-                Booking.BookingPerformanceId = Performance.PerformanceId; // Set performance ID
+                
+                Booking.BookingQuantity = (int)Quantity; 
+                Booking.BookingCustomerId = (int)_customerService.loggedInCustomer.CustomerId; 
+                Booking.BookingPerformanceId = Performance.PerformanceId; 
 
-                bool isNewItem = Booking.BookingId == default; // Adjust based on how you identify new vs existing
+                bool isNewItem = Booking.BookingId == default; 
 
-                // Save the booking using the booking service
                 await _bookingService.SaveBookingAsync(Booking, isNewItem);
 
                 // Optionally, navigate away or show a confirmation message
