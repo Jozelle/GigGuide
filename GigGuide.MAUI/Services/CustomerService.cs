@@ -11,6 +11,8 @@ namespace GigGuide.MAUI.Services
         public CustomerService(IRestService restService)
         {
             _restService = restService;
+
+            //kOD FÖR ATT HÄMTA KUND 1 OCH SÄTTA  TILL LOGGEDINCUSTOMER
         }
 
         //public async Task<List<Customer>?> GetCustomersAsync()
