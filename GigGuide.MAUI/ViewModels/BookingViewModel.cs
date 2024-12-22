@@ -4,11 +4,11 @@ using GigGuide.MAUI.Models;
 using GigGuide.MAUI.Services.Interfaces;
 using System.Collections.ObjectModel;
 
+
 namespace GigGuide.MAUI.ViewModels
 {
-    [ObservableObject]
     [QueryProperty("Performance", nameof(Performance))]
-    public partial class BookingViewModel
+    public partial class BookingViewModel : ObservableObject
     {
         private IBookingService _bookingService;
         private ICustomerService _customerService;
@@ -32,7 +32,7 @@ namespace GigGuide.MAUI.ViewModels
         public async Task Appearing()
         {
             // Hämta bokning för performance och "current customer"
-            if (_customerService.loggedInCustomer != null )
+            if (_customerService.loggedInCustomer != null)
             {
                 Booking = await _bookingService.GetBookingByPerformanceAndCustomerAsync(Performance.PerformanceId, (int)_customerService.loggedInCustomer.CustomerId);
                 if (Booking == null)
@@ -45,7 +45,7 @@ namespace GigGuide.MAUI.ViewModels
                         BookingPerformanceId = Performance.PerformanceId
                     };
                 }
-              
+
                 Quantity = Booking.BookingQuantity;
             }
             else
@@ -66,3 +66,5 @@ namespace GigGuide.MAUI.ViewModels
                 //Update booking
             }
         }
+    }
+}
