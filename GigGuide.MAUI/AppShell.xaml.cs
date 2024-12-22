@@ -9,6 +9,7 @@ namespace GigGuide.MAUI
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(ConcertPerformanceListPage), typeof(ConcertPerformanceListPage));
+            Routing.RegisterRoute(nameof(BookingPage), typeof(BookingPage));
         }
     }
 }

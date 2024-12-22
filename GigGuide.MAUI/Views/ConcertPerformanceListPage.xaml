@@ -3,43 +3,41 @@
     x:Class="GigGuide.MAUI.Views.ConcertPerformanceListPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:models="clr-namespace:GigGuide.MAUI.Models"
     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    Title="ConcertPerformanceListPage">
+    xmlns:models="clr-namespace:GigGuide.MAUI.Models"
+    Title="Performances">
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
     <VerticalStackLayout>
         <Label
+            FontSize="Title"
             HorizontalOptions="Center"
             Text="{Binding Concert.ConcertArtist}"
-            VerticalOptions="Center" 
-            FontSize="Title"/>
+            VerticalOptions="Center" />
         <Label
+            FontSize="Subtitle"
             HorizontalOptions="Center"
             Text="{Binding Concert.ConcertTitle}"
-            VerticalOptions="Center"
-            FontSize="Subtitle"/>
+            VerticalOptions="Center" />
         <Label
+            FontSize="Body"
             HorizontalOptions="Center"
             Text="{Binding Concert.ConcertDescription}"
-            VerticalOptions="Center"
-            FontSize="Body"/>
-        <Line/>
+            VerticalOptions="Center" />
 
         <StackLayout>
             <CollectionView
-         ItemsSource="{Binding Performances}"
-         SelectedItem="{Binding SelectedPerformance, Mode=TwoWay}"
-         SelectionChangedCommand="{Binding NavigateToPerformanceCommand}"
-         SelectionMode="Single">
+                ItemsSource="{Binding Performances}"
+                SelectedItem="{Binding SelectedPerformance, Mode=TwoWay}"
+                SelectionMode="Single">
                 <CollectionView.Behaviors>
-                    <behaviors:EventToCommandBehavior Command="{Binding NavigateToConcertCommand}" EventName="SelectionChanged" />
+                    <behaviors:EventToCommandBehavior Command="{Binding NavigateToBookingCommand}" EventName="SelectionChanged" />
                 </CollectionView.Behaviors>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Performance">
                         <StackLayout Padding="10">
-                            <Label FontSize="Title" Text="{Binding PerformanceVenueId}" />
+                            <Label FontSize="Medium" Text="{Binding PerformanceLocation}" />
                             <Label FontSize="Subtitle" Text="{Binding PerformanceTime}" />
                         </StackLayout>
                     </DataTemplate>

@@ -1,4 +1,6 @@
-﻿namespace GigGuide.MAUI.Services;
+﻿using GigGuide.MAUI.Services.Interfaces;
+
+namespace GigGuide.MAUI.Services;
 
 public class HttpsClientHandlerService : IHttpsClientHandlerService
 {

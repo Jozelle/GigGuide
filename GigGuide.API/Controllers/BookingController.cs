@@ -2,7 +2,7 @@
 using GigGuide.API.Controllers.Enums;
 using GigGuide.Data.DTO;
 using GigGuide.Data.Entities;
-using GigGuide.Data.Repository;
+using GigGuide.Data.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GigGuide.API.Controllers
@@ -31,6 +31,12 @@ namespace GigGuide.API.Controllers
         public async Task<IActionResult> GetBooking(int id)
         {
             return Ok(_mapper.Map<Booking>(await _unitOfWork.Bookings.Find(id)));
+        }
+
+        [HttpGet("{performanceId}/{customerId}")]
+        public async Task<IActionResult> GetBookingByPerformanceAndCustomer(int performaceId, int customerId)
+        {
+            return Ok(_mapper.Map<Booking>(await _unitOfWork.Bookings.GetBookingByPerformanceAndCustomer(performaceId, customerId)));
         }
 
         [HttpPost]

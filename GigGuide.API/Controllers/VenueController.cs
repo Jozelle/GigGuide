@@ -2,7 +2,7 @@
 using GigGuide.API.Controllers.Enums;
 using GigGuide.Data.DTO;
 using GigGuide.Data.Entities;
-using GigGuide.Data.Repository;
+using GigGuide.Data.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 
