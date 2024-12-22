@@ -4,9 +4,15 @@ namespace GigGuide.MAUI.Views;
 
 public partial class CustomerPage : ContentPage
 {
-	public CustomerPage(CustomerViewModel viewModel)
-	{
-		InitializeComponent();
+    public CustomerPage()
+    {
+        InitializeComponent();
+        // Optionally, set a default BindingContext or handle initialization
+    }
+
+    public CustomerPage(CustomerViewModel viewModel)
+    {
+        InitializeComponent();
         BindingContext = viewModel;
     }
 }
