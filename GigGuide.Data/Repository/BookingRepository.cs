@@ -1,6 +1,7 @@
 ﻿using GigGuide.Data.Entities;
 using GigGuide.Data.Repository.Base;
 using GigGuide.Data.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace GigGuide.Data.Repository
 {
@@ -18,6 +19,10 @@ namespace GigGuide.Data.Repository
         {
             return await DbContext.Bookings.FindAsync(id);
             //return await DbContext.Bookings.FirstOrDefaultAsync(item => item.ID == id);
+        }
+        public async Task<Booking?> GetBookingByPerformanceAndCustomer(int performanceId, int customerId)
+        {
+            return await DbContext.Bookings.FirstOrDefaultAsync(b => b.PerformanceId == performanceId && b.CustomerId == customerId);
         }
         public void Update(Booking booking)
         {

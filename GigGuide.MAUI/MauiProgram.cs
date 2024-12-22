@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using GigGuide.MAUI.Services;
+using GigGuide.MAUI.Services.Interfaces;
 using GigGuide.MAUI.ViewModels;
 using GigGuide.MAUI.Views;
 using Microsoft.Extensions.Logging;
@@ -27,19 +28,22 @@ namespace GigGuide.MAUI
             // Services
             builder.Services.AddSingleton<IHttpsClientHandlerService, HttpsClientHandlerService>();
             builder.Services.AddSingleton<IRestService, RestService>();
+            builder.Services.AddSingleton<ICustomerService, CustomerService>();
             builder.Services.AddSingleton<IConcertService, ConcertService>();
             builder.Services.AddSingleton<IPerformanceService, PerformanceService>();
+            builder.Services.AddSingleton<IBookingService, BookingService>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            //builder.Services.AddAutoMapper(typeof(ConcertProfile));
 
             // Pages
             builder.Services.AddSingleton<ConcertListPage>();
             builder.Services.AddTransient<ConcertPerformanceListPage>();
+            builder.Services.AddTransient<BookingPage>();
 
             // ViewModels
             builder.Services.AddSingleton<ConcertListViewModel>();
             builder.Services.AddTransient<ConcertPerformanceListViewModel>();
+            builder.Services.AddTransient<BookingViewModel>();
 
             return builder.Build();
         }

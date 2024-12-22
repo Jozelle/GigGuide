@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GigGuide.MAUI.Services
+namespace GigGuide.MAUI.Services.Interfaces
 {
     public interface IHttpsClientHandlerService
     {

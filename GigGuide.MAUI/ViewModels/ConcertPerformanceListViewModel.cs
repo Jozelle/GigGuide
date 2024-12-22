@@ -1,8 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GigGuide.MAUI.Models;
-using GigGuide.MAUI.Services;
+using GigGuide.MAUI.Services.Interfaces;
 using System.Collections.ObjectModel;
+
 
 namespace GigGuide.MAUI.ViewModels
 {
@@ -33,14 +34,16 @@ namespace GigGuide.MAUI.ViewModels
         }
 
         [RelayCommand]
-        public async Task NavigateToPerformance()
+        public async Task NavigateToBooking()
         {
             if (SelectedPerformance == null) return;
+            SelectedPerformance.PerformanceConcert = Concert;
+
             var navigationParameter = new Dictionary<string, object>
             {
                 { nameof(Performance), SelectedPerformance }
             };
-            //await Shell.Current.GoToAsync("ConcertPerformanceListPage", navigationParameter);
+            await Shell.Current.GoToAsync("BookingPage", navigationParameter);
         }
     }
 }

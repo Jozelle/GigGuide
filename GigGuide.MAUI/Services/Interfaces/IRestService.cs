@@ -1,11 +1,12 @@
 ﻿using GigGuide.MAUI.Models;
 
-namespace GigGuide.MAUI.Services
+namespace GigGuide.MAUI.Services.Interfaces
 {
     public interface IRestService
     {
         Task<List<Concert>?> RefreshConcertDataAsync();
         Task<List<Performance>?> RefreshPerformanceDataAsync(int? id);
+        Task<Booking?> GetBookingByPerformanceAndCustomerAsync(int performanceId, int customerId);
         Task SaveBookingAsync(Booking item, bool isNewItem);
         Task DeleteBookingAsync(string id);
     }
