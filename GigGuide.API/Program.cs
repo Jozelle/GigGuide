@@ -1,6 +1,7 @@
 using GigGuide.Data.Repository;
 using GigGuide.Data;
 using Microsoft.EntityFrameworkCore;
+using GigGuide.Data.Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
