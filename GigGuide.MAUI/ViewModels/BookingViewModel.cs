@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GigGuide.MAUI.Models;
 using GigGuide.MAUI.Services.Interfaces;
@@ -66,5 +66,3 @@ namespace GigGuide.MAUI.ViewModels
                 //Update booking
             }
         }
-    }
-}
