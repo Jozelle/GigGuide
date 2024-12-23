@@ -7,42 +7,60 @@
     xmlns:models="clr-namespace:GigGuide.MAUI.Models"
     Title="CustomerPage">
     <ContentPage.Behaviors>
-        
+        <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
-    
+
     <ScrollView>
         <VerticalStackLayout>
-            <!-- Welcome Message -->
+            <!--  Welcome Message  -->
             <Label
-                Text="{Binding WelcomeMessage}"
+                FontAttributes="Bold"
                 FontSize="24"
-                FontAttributes="Bold"
-                HorizontalOptions="Center" /> 
-        <!-- User Settings Section -->
-        <Label
-                Text="User Settings"
-                FontSize="20"
-                FontAttributes="Bold"
-                Margin="0,20,0,10" />
-
-        <Button Text="Change Password" Command="{Binding ChangePasswordCommand}" />
-        <Button Text="Update Email" Command="{Binding UpdateEmailCommand}" />
-
-            <!-- My Bookings Section -->
+                HorizontalOptions="Center"
+                Text="{Binding WelcomeMessage}" />
+            <!--  User Settings Section  -->
             <Label
-                Text="My Bookings"
-                FontSize="20"
+                Margin="0,20,0,10"
                 FontAttributes="Bold"
-                Margin="0,20,0,10" />
+                FontSize="20"
+                Text="User Settings" />
 
-            <CollectionView ItemsSource="{Binding MyBookings}" 
+            <Label Text="{Binding CurrentCustomer.CustomerFirstName}" />
+            <Label Text="{Binding CurrentCustomer.CustomerLastName}" />
+
+            <Label Text="{Binding CurrentCustomer.CustomerEmail}" />
+            <Button Command="{Binding UpdateEmailCommand}" Text="Update Email" />
+
+            <Label Text="{Binding CurrentCustomer.CustomerPhone}" />
+
+            <Button Command="{Binding ChangePasswordCommand}" Text="Change Password" />
+
+
+            <!--  My Bookings Section  -->
+            <Label
+                Margin="0,20,0,10"
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="My Bookings" />
+
+            <CollectionView
+                ItemsSource="{Binding MyBookings}"
+                SelectedItem="{Binding SelectedBooking, Mode=TwoWay}"
                 SelectionMode="Single">
+                <CollectionView.Behaviors>
+                    <behaviors:EventToCommandBehavior Command="{Binding NavigateToBookingCommand}" EventName="SelectionChanged" />
+                </CollectionView.Behaviors>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame Padding="10" Margin="5" BorderColor="LightGray">
+                    <DataTemplate x:DataType="models:Booking">
+                        <Frame
+                            Margin="5"
+                            Padding="10"
+                            BorderColor="LightGray">
                             <StackLayout>
-                                <Label Text="{Binding BookingPerformanceId}" FontSize="16" />
-                                <Label Text="{Binding BookingQuantity}" FontSize="14" />
+                                <Label FontSize="Large" Text="{Binding Performance.PerformanceConcert.ConcertArtist}" />
+                                <Label FontSize="Medium" Text="{Binding Performance.PerformanceConcert.ConcertTitle}" />
+                                <Label FontSize="Medium" Text="{Binding Performance.PerformanceLocation}" />
+                                <Label FontSize="14" Text="{Binding BookingQuantity, StringFormat='{}{0} tickets'}" />
                             </StackLayout>
                         </Frame>
                     </DataTemplate>

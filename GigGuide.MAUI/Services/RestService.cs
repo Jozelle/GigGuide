@@ -130,6 +130,29 @@ namespace GigGuide.MAUI.Services
             return booking;
         }
 
+        public async Task<List<Booking>?> GetBookingsByCustomerAsync(int customerId)
+        {
+            Bookings = new List<Booking>();
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Booking", $"Customer/{customerId}"));
+            try
+            {
+                HttpResponseMessage response = await _client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    Bookings = _mapper.Map<List<Booking>>
+                    (
+                    JsonSerializer.Deserialize<List<BookingDto>>(content, _serializerOptions)
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+            return Bookings;
+        }
+
         public async Task<Booking> SaveBookingAsync(Booking booking, bool isNewItem = false)
         {
             Booking savedBooking = null!;
