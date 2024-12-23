@@ -24,6 +24,7 @@ namespace GigGuide.Data.Repository
             Customers = new CustomerRepository(context);
             Concerts = new ConcertRepository(context);
             Performances = new PerformanceRepository(context);
+            Bookings = new BookingRepository(context);
         }
         public async Task<int> Complete()
         {

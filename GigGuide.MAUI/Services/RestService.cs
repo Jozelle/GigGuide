@@ -18,6 +18,7 @@ namespace GigGuide.MAUI.Services
         public List<Concert>? Concerts { get; private set; }
         public List<Performance>? Performances { get; private set; }
         public List<Booking>? Bookings { get; private set; }
+        public Customer? loggedInCustomer { get; set; }
         public RestService(IHttpsClientHandlerService service, IMapper mapper)
         {
             _mapper = mapper;
@@ -85,7 +86,27 @@ namespace GigGuide.MAUI.Services
             }
             return Performances;
         }
-
+        public async Task<Customer?> GetCustomer(int customerId) //Temporary fix
+        {
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Customer", customerId));
+            try
+            {
+                HttpResponseMessage response = await _client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    loggedInCustomer = _mapper.Map<Customer>
+                    (
+                    JsonSerializer.Deserialize<CustomerDto>(content, _serializerOptions)
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+            return loggedInCustomer;
+        }
         public async Task<Booking?> GetBookingByPerformanceAndCustomerAsync(int performanceId, int customerId)
         {
             Booking? booking = null;

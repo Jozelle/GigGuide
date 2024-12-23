@@ -7,11 +7,14 @@ using System.Collections.ObjectModel;
 
 namespace GigGuide.MAUI.ViewModels
 {
+    [ObservableObject]
     [QueryProperty("Performance", nameof(Performance))]
-    public partial class BookingViewModel : ObservableObject
+    public partial class BookingViewModel
     {
         private IBookingService _bookingService;
         private ICustomerService _customerService;
+
+        private Customer? customer;
 
         [ObservableProperty]
         private Performance performance;
@@ -31,22 +34,17 @@ namespace GigGuide.MAUI.ViewModels
         [RelayCommand]
         public async Task Appearing()
         {
+            //Hämta ev inloggad kund
+            customer = await _customerService.GetCustomerAsync(1);
+            
             // Hämta bokning för performance och "current customer"
-            if (_customerService.loggedInCustomer != null)
+            if (customer != null)
             {
-                Booking = await _bookingService.GetBookingByPerformanceAndCustomerAsync(Performance.PerformanceId, (int)_customerService.loggedInCustomer.CustomerId);
-                if (Booking == null)
+                Booking = await _bookingService.GetBookingByPerformanceAndCustomerAsync(Performance.PerformanceId, customer.CustomerId);
+                if (Booking != null)
                 {
-                    Booking = new Booking
-                    {
-                        BookingId = default,
-                        BookingQuantity = 0,
-                        BookingCustomerId = (int)_customerService.loggedInCustomer.CustomerId,
-                        BookingPerformanceId = Performance.PerformanceId
-                    };
+                    Quantity = Booking.BookingQuantity;
                 }
-
-                Quantity = Booking.BookingQuantity;
             }
             else
             {
@@ -70,14 +68,13 @@ namespace GigGuide.MAUI.ViewModels
         [RelayCommand]
         public async Task SaveBooking()
         {
-            if (_customerService.loggedInCustomer != null)
+            if (customer != null)
             {
-                
-                Booking.BookingQuantity = (int)Quantity; 
-                Booking.BookingCustomerId = (int)_customerService.loggedInCustomer.CustomerId; 
-                Booking.BookingPerformanceId = Performance.PerformanceId; 
+                Booking.BookingQuantity = Quantity;
+                Booking.BookingCustomerId = customer.CustomerId;
+                Booking.BookingPerformanceId = Performance.PerformanceId;
 
-                bool isNewItem = Booking.BookingId == default; 
+                bool isNewItem = Booking.BookingId == default;
 
                 await _bookingService.SaveBookingAsync(Booking, isNewItem);
 
