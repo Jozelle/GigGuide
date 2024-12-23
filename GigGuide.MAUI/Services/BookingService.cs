@@ -28,7 +28,7 @@ namespace GigGuide.MAUI.Services
 
         public Task<List<Booking>?> GetBookingsByCustomerAsync(int customerId)
         {
-            throw new NotImplementedException();
+            return _restService.GetBookingsByCustomerAsync(customerId);
         }
 
         public Task<List<Booking>?> GetBookingsByPerformanceAsync(int performanceId)
