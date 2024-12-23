@@ -8,7 +8,7 @@ namespace GigGuide.MAUI.Services.Interfaces
         Task<List<Performance>?> RefreshPerformanceDataAsync(int? id);
         Task<Customer?> GetCustomer(int customerId);
         Task<Booking?> GetBookingByPerformanceAndCustomerAsync(int performanceId, int customerId);
-        Task SaveBookingAsync(Booking item, bool isNewItem);
-        Task DeleteBookingAsync(string id);
+        Task<Booking> SaveBookingAsync(Booking item, bool isNewItem);
+        Task DeleteBookingAsync(int id);
     }
 }

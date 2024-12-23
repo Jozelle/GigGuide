@@ -41,9 +41,14 @@ namespace GigGuide.MAUI.Services
             return _restService.GetBookingByPerformanceAndCustomerAsync(performanceId, customerId);
         }
 
-        public async Task SaveBookingAsync(Booking booking, bool isNewItem = true)
+        public async Task<Booking> SaveBookingAsync(Booking booking, bool isNewItem = false)
         {
-            await _restService.SaveBookingAsync(booking, isNewItem);
+            return await _restService.SaveBookingAsync(booking, isNewItem);
+        }
+
+        public async Task DeleteBookingAsync(int id)
+        {
+            await _restService.DeleteBookingAsync(id);
         }
     }
 }
