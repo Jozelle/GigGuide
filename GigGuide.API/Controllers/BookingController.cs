@@ -34,9 +34,9 @@ namespace GigGuide.API.Controllers
         }
 
         [HttpGet("{performanceId}/{customerId}")]
-        public async Task<IActionResult> GetBookingByPerformanceAndCustomer(int performaceId, int customerId)
+        public async Task<IActionResult> GetBookingByPerformanceAndCustomer(int performanceId, int customerId)
         {
-            return Ok(_mapper.Map<Booking>(await _unitOfWork.Bookings.GetBookingByPerformanceAndCustomer(performaceId, customerId)));
+            return Ok(_mapper.Map<Booking?>(await _unitOfWork.Bookings.GetBookingByPerformanceAndCustomer(performanceId, customerId)));
         }
 
         [HttpPost]

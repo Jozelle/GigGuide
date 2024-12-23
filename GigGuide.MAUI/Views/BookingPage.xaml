@@ -44,13 +44,13 @@
             HorizontalOptions="Center"
             Text="{Binding Source={x:Reference _stepper}, Path=Value}"
             VerticalOptions="Center" />
-        
-        <!-- Button -->
+
+        <Label HorizontalOptions="Center" Text="{Binding Booking.BookingQuantity, StringFormat='{}Your current booking include {0} tickets. Please change amount on the stepper and press Confirm to change amount.'}" />
         <Button
-            Text="Confirm Booking"
+            Margin="20"
             Command="{Binding ConfirmBookingCommand}"
             HorizontalOptions="Center"
-            VerticalOptions="End"
-            Margin="20" />
+            Text="Confirm Booking"
+            VerticalOptions="End" />
     </VerticalStackLayout>
 </ContentPage>
