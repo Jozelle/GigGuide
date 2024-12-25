@@ -11,6 +11,7 @@ namespace GigGuide.Data.DTO
         public int? Id { get; set; } = null!;
         public int? Quantity { get; set; } = null!;
         public int? PerformanceId { get; set; } = null!;
+        public PerformanceDto? Performance { get; set; } = null!;
         public int? CustomerId { get; set; } = null!;
     }
 }
