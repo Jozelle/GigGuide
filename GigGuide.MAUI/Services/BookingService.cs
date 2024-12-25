@@ -28,7 +28,7 @@ namespace GigGuide.MAUI.Services
 
         public Task<List<Booking>?> GetBookingsByCustomerAsync(int customerId)
         {
-            throw new NotImplementedException();
+            return _restService.GetBookingsByCustomerAsync(customerId);
         }
 
         public Task<List<Booking>?> GetBookingsByPerformanceAsync(int performanceId)
@@ -39,6 +39,16 @@ namespace GigGuide.MAUI.Services
         public Task<Booking?> GetBookingByPerformanceAndCustomerAsync(int performanceId, int customerId)
         {
             return _restService.GetBookingByPerformanceAndCustomerAsync(performanceId, customerId);
+        }
+
+        public async Task<Booking> SaveBookingAsync(Booking booking, bool isNewItem = false)
+        {
+            return await _restService.SaveBookingAsync(booking, isNewItem);
+        }
+
+        public async Task DeleteBookingAsync(int id)
+        {
+            await _restService.DeleteBookingAsync(id);
         }
     }
 }
