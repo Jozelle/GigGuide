@@ -51,20 +51,18 @@
                 </CollectionView.Behaviors>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Booking">
-                        <!--<Frame
-                            Margin="5"
-                            Padding="10"
-                            BorderColor="LightGray">-->
-                        <StackLayout
+                        <Border
                             Margin="5"
                             Padding="5"
-                            BackgroundColor="{x:StaticResource Secondary}">
-                            <Label FontSize="Medium" Text="{Binding Performance.PerformanceConcert.ConcertArtist}" />
-                            <Label FontSize="Small" Text="{Binding Performance.PerformanceConcert.ConcertTitle}" />
-                            <Label FontSize="Small" Text="{Binding Performance.PerformanceLocation}" />
-                            <Label FontSize="Small" Text="{Binding BookingQuantity, StringFormat='{}{0} tickets'}" />
-                        </StackLayout>
-                        <!--</Frame>-->
+                            StrokeShape="RoundRectangle 10">
+                            <StackLayout Margin="5" Padding="5">
+                                <Label FontSize="Medium" Text="{Binding Performance.PerformanceConcert.ConcertArtist}" />
+                                <Label FontSize="Small" Text="{Binding Performance.PerformanceConcert.ConcertTitle}" />
+                                <Label FontSize="Small" Text="{Binding Performance.PerformanceLocation}" />
+                                <Label FontSize="Small" Text="{Binding BookingQuantity, StringFormat='{}{0} tickets'}" />
+                            </StackLayout>
+                        </Border>
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
