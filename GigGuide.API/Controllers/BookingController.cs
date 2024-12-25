@@ -36,7 +36,9 @@ namespace GigGuide.API.Controllers
         [HttpGet("Customer/{customerId}")]
         public async Task<IActionResult> GetBookingsByCustomer(int customerId)
         {
-            return Ok(_mapper.Map<Booking?>(await _unitOfWork.Bookings.GetBookingsByCustomer(customerId)));
+            var bookings = await _unitOfWork.Bookings.GetBookingsByCustomer(customerId);
+            return Ok(_mapper.Map<IEnumerable<BookingDto>>(bookings));
+            //return Ok(_mapper.Map<Booking?>(await _unitOfWork.Bookings.GetBookingsByCustomer(customerId)));
         }
 
         [HttpGet("{performanceId}/{customerId}")]
