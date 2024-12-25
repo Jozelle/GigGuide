@@ -9,7 +9,7 @@
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
-    <ScrollView>
+    <ScrollView Margin="5">
         <VerticalStackLayout>
             <!--  Welcome Message  -->
             <Label
