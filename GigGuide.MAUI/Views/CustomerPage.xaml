@@ -9,7 +9,7 @@
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
-    <ScrollView Margin="5">
+    <ScrollView Margin="10">
         <VerticalStackLayout>
             <!--  Welcome Message  -->
             <Label
@@ -52,10 +52,10 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Booking">
                         <Border
-                            Margin="5"
+                            Margin="0,5"
                             Padding="5"
                             StrokeShape="RoundRectangle 10">
-                            <StackLayout Margin="5" Padding="5">
+                            <StackLayout>
                                 <Label FontSize="Medium" Text="{Binding Performance.PerformanceConcert.ConcertArtist}" />
                                 <Label FontSize="Small" Text="{Binding Performance.PerformanceConcert.ConcertTitle}" />
                                 <Label FontSize="Small" Text="{Binding Performance.PerformanceLocation}" />
