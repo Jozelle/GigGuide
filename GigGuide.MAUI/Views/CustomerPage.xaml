@@ -9,39 +9,39 @@
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
+    <ScrollView>
+        <VerticalStackLayout>
+            <!--  Welcome Message  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="{Binding WelcomeMessage}" />
+            <!--  User Settings Section  -->
+            <Label
+                Margin="0,20,0,10"
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="User Settings" />
 
-    <VerticalStackLayout>
-        <!--  Welcome Message  -->
-        <Label
-            FontAttributes="Bold"
-            FontSize="24"
-            HorizontalOptions="Center"
-            Text="{Binding WelcomeMessage}" />
-        <!--  User Settings Section  -->
-        <Label
-            Margin="0,20,0,10"
-            FontAttributes="Bold"
-            FontSize="20"
-            Text="User Settings" />
+            <Label Text="{Binding CurrentCustomer.CustomerFirstName}" />
+            <Label Text="{Binding CurrentCustomer.CustomerLastName}" />
 
-        <Label Text="{Binding CurrentCustomer.CustomerFirstName}" />
-        <Label Text="{Binding CurrentCustomer.CustomerLastName}" />
+            <Label Text="{Binding CurrentCustomer.CustomerEmail}" />
+            <Button Command="{Binding UpdateEmailCommand}" Text="Update Email" />
 
-        <Label Text="{Binding CurrentCustomer.CustomerEmail}" />
-        <Button Command="{Binding UpdateEmailCommand}" Text="Update Email" />
+            <Label Text="{Binding CurrentCustomer.CustomerPhone}" />
 
-        <Label Text="{Binding CurrentCustomer.CustomerPhone}" />
-
-        <Button Command="{Binding ChangePasswordCommand}" Text="Change Password" />
+            <Button Command="{Binding ChangePasswordCommand}" Text="Change Password" />
 
 
-        <!--  My Bookings Section  -->
-        <Label
-            Margin="0,20,0,10"
-            FontAttributes="Bold"
-            FontSize="20"
-            Text="My Bookings" />
-        <ScrollView>
+            <!--  My Bookings Section  -->
+            <Label
+                Margin="0,20,0,10"
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="My Bookings" />
+
             <CollectionView
                 ItemsSource="{Binding MyBookings}"
                 SelectedItem="{Binding SelectedBooking, Mode=TwoWay}"
@@ -67,7 +67,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-        </ScrollView>
-    </VerticalStackLayout>
 
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
