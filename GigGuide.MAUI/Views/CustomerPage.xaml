@@ -34,7 +34,6 @@
 
             <Button Command="{Binding ChangePasswordCommand}" Text="Change Password" />
 
-
             <!--  My Bookings Section  -->
             <Label
                 Margin="0,20,0,10"
