@@ -4,6 +4,6 @@ namespace GigGuide.MAUI.Services.Interfaces
 {
     public interface ICustomerService
     {
-        Customer? loggedInCustomer { get; set; }
+        Task<Customer?> GetCustomerAsync(int id);
     }
 }

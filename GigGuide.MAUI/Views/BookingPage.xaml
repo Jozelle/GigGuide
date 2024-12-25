@@ -26,23 +26,43 @@
             HorizontalOptions="Center"
             Text="{Binding Performance.PerformanceTime}"
             VerticalOptions="Center" />
+        <Label
+            FontSize="Body"
+            HorizontalOptions="Center"
+            Text="{Binding Performance.PerformanceLocation}"
+            VerticalOptions="Center" />
 
         <!--  Plats för karta  -->
 
-        <Stepper
-            x:Name="_stepper"
-            HorizontalOptions="Center"
-            Increment="1"
-            Maximum="10"
-            Minimum="0"
-            Value="{Binding Quantity, Mode=TwoWay}">
-            <Stepper.Behaviors>
-                <behaviors:EventToCommandBehavior Command="{Binding StepperValueChangedCommand}" EventName="ValueChanged" />
-            </Stepper.Behaviors>
-        </Stepper>
+        <Grid ColumnDefinitions="2*, *">
+            <Stepper
+                x:Name="_stepper"
+                Grid.Column="0"
+                HorizontalOptions="Center"
+                Increment="1"
+                Maximum="10"
+                Minimum="0"
+                Value="{Binding Quantity, Mode=TwoWay}">
+                <Stepper.Behaviors>
+                    <behaviors:EventToCommandBehavior Command="{Binding StepperValueChangedCommand}" EventName="ValueChanged" />
+                </Stepper.Behaviors>
+            </Stepper>
+            <Label
+                Grid.Column="1"
+                FontSize="Large"
+                Text="{Binding Source={x:Reference _stepper}, Path=Value}"
+                VerticalOptions="Center" />
+        </Grid>
+
         <Label
+            FontSize="Medium"
             HorizontalOptions="Center"
-            Text="{Binding Source={x:Reference _stepper}, Path=Value}"
-            VerticalOptions="Center" />
+            Text="{Binding BookingStatus}" />
+        <!--<Button
+            Margin="20"
+            Command="{Binding ConfirmBookingCommand}"
+            HorizontalOptions="Center"
+            Text="Confirm Booking"
+            VerticalOptions="End" />-->
     </VerticalStackLayout>
 </ContentPage>

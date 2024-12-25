@@ -1,17 +1,72 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:models="clr-namespace:GigGuide.MAUI.Models"
-             x:Class="GigGuide.MAUI.Views.CustomerPage"
-             Title="CustomerPage">
+<ContentPage
+    x:Class="GigGuide.MAUI.Views.CustomerPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:models="clr-namespace:GigGuide.MAUI.Models"
+    Title="CustomerPage">
     <ContentPage.Behaviors>
-        
+        <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
+    <ScrollView Margin="10">
         <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            <!--  Welcome Message  -->
+            <Label
+                FontAttributes="Bold"
+                FontSize="24"
+                HorizontalOptions="Center"
+                Text="{Binding WelcomeMessage}" />
+            <!--  User Settings Section  -->
+            <Label
+                Margin="0,20,0,10"
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="User Settings" />
+
+            <Label Text="{Binding CurrentCustomer.CustomerFirstName}" />
+            <Label Text="{Binding CurrentCustomer.CustomerLastName}" />
+
+            <Label Text="{Binding CurrentCustomer.CustomerEmail}" />
+            <Button Command="{Binding UpdateEmailCommand}" Text="Update Email" />
+
+            <Label Text="{Binding CurrentCustomer.CustomerPhone}" />
+
+            <Button Command="{Binding ChangePasswordCommand}" Text="Change Password" />
+
+            <!--  My Bookings Section  -->
+            <Label
+                Margin="0,20,0,10"
+                FontAttributes="Bold"
+                FontSize="20"
+                Text="My Bookings" />
+
+            <CollectionView
+                ItemsSource="{Binding MyBookings}"
+                SelectedItem="{Binding SelectedBooking, Mode=TwoWay}"
+                SelectionMode="Single">
+                <CollectionView.Behaviors>
+                    <behaviors:EventToCommandBehavior Command="{Binding NavigateToBookingCommand}" EventName="SelectionChanged" />
+                </CollectionView.Behaviors>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Booking">
+                        <Border
+                            Margin="0,5"
+                            Padding="5"
+                            StrokeShape="RoundRectangle 10">
+                            <StackLayout>
+                                <Label FontSize="Medium" Text="{Binding Performance.PerformanceConcert.ConcertArtist}" />
+                                <Label FontSize="Small" Text="{Binding Performance.PerformanceConcert.ConcertTitle}" />
+                                <Label FontSize="Small" Text="{Binding Performance.PerformanceLocation}" />
+                                <Label FontSize="Small" Text="{Binding BookingQuantity, StringFormat='{}{0} tickets'}" />
+                            </StackLayout>
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

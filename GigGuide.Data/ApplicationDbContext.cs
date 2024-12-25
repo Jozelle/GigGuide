@@ -438,9 +438,81 @@ namespace GigGuide.Data
             };
 
             builder.Entity<Performance>().HasData(performance1, performance2, performance3, performance4, performance5, performance6, performance7, performance8, performance9, performance10, performance11, performance12, performance13, performance14, performance15, performance16, performance17, performance18, performance19, performance20, performance21, performance22, performance23, performance24, performance25);
-        
+      
+           
+            Booking booking1 = new Booking
+            {
+                Id = 1,
+                Quantity = 2,
+                PerformanceId = 1,
+                CustomerId = 1
+            };
 
+            Booking booking2 = new Booking
+            {
+                Id = 2,
+                Quantity = 4,
+                PerformanceId = 5, 
+                CustomerId = 2 
+            };
+            Booking booking3 = new Booking
+            {
+                Id = 3,
+                Quantity = 1,
+                PerformanceId = 10,
+                CustomerId = 1
+            };
+            Booking booking4 = new Booking
+            {
+                Id = 4,
+                Quantity = 3,
+                PerformanceId = 15, 
+                CustomerId = 2 
+            };
+            Booking booking5 = new Booking
+            {
+                Id = 5,
+                Quantity = 2,
+                PerformanceId = 3, 
+                CustomerId = 2 
+            };
+            Booking booking6 = new Booking
+            {
+                Id = 6,
+                Quantity = 5,
+                PerformanceId = 22, 
+                CustomerId = 1 
+            };
+            Booking booking7 = new Booking
+            {
+                Id = 7,
+                Quantity = 1,
+                PerformanceId = 8, 
+                CustomerId = 2 
+            };
+            Booking booking8 = new Booking
+            {
+                Id = 8,
+                Quantity = 4,
+                PerformanceId = 19, 
+                CustomerId = 1 
+            };
+            Booking booking9 = new Booking
+            {
+                Id = 9,
+                Quantity = 3,
+                PerformanceId = 24, 
+                CustomerId = 2 
+            };
+
+            builder.Entity<Booking>().HasData(booking1, booking2, booking3, booking4, booking5, booking6, booking7, booking8, booking9);
         }
 
+
+
+
+
     }
+
 }
+
