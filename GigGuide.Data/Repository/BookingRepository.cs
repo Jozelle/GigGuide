@@ -25,6 +25,8 @@ namespace GigGuide.Data.Repository
             return await DbContext.Bookings.Where(b => b.CustomerId == customerId)
                 .Include(b => b.Performance)
                 .ThenInclude(p => p.Concert)
+                .Include(b => b.Performance)
+                .ThenInclude(p => p.Venue)
                 .ToListAsync();
         }
         public async Task<Booking?> GetBookingByPerformanceAndCustomer(int performanceId, int customerId)
