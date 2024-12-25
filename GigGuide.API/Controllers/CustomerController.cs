@@ -21,13 +21,13 @@ namespace GigGuide.API.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            return Ok(_mapper.Map<IEnumerable<Customer>>(await _unitOfWork.Customers.All()));
+            return Ok(_mapper.Map<IEnumerable<CustomerDto>>(await _unitOfWork.Customers.All()));
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCustomer(int id)
         {
-            return Ok(_mapper.Map<Customer>(await _unitOfWork.Customers.Find(id)));
+            return Ok(_mapper.Map<CustomerDto>(await _unitOfWork.Customers.Find(id)));
         }
 
         [HttpPost]
