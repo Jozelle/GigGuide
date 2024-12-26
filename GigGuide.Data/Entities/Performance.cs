@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace GigGuide.Data.Entities
 {
@@ -14,7 +16,13 @@ namespace GigGuide.Data.Entities
         public required int TicketPrice { get; set; }
 
         [Required]
-        public required int TicketsAvailable { get; set; }
+        public required int TicketsAvailable { get; set; }      // Total amount of tickets available
+
+        [JsonIgnore]
+        public ICollection<Booking>? Bookings { get; set; }
+
+        [NotMapped]
+        public int TicketsBooked => Bookings?.Sum(b => b.Quantity) ?? 0;
 
         public int ConcertId { get; set; }
         public Concert? Concert { get; set; }
