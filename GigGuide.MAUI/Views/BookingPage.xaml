@@ -58,11 +58,6 @@
             FontSize="Medium"
             HorizontalOptions="Center"
             Text="{Binding BookingStatus}" />
-        <!--<Button
-            Margin="20"
-            Command="{Binding ConfirmBookingCommand}"
-            HorizontalOptions="Center"
-            Text="Confirm Booking"
-            VerticalOptions="End" />-->
+
     </VerticalStackLayout>
 </ContentPage>
