@@ -10,28 +10,32 @@
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
     <ContentPage.Content>
-        <StackLayout>
-            <CollectionView
-                ItemsSource="{Binding Concerts}"
-                SelectedItem="{Binding SelectedConcert, Mode=TwoWay}"
-                SelectionMode="Single">
-                <CollectionView.Behaviors>
-                    <behaviors:EventToCommandBehavior Command="{Binding NavigateToConcertCommand}" EventName="SelectionChanged" />
-                </CollectionView.Behaviors>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Concert">
-                        <Border
-                            Margin="0,5"
-                            Padding="5"
-                            StrokeShape="RoundRectangle 10">
-                            <StackLayout Padding="10">
-                                <Label FontSize="Title" Text="{Binding ConcertArtist}" />
-                                <Label FontSize="Subtitle" Text="{Binding ConcertTitle}" />
-                            </StackLayout>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
+        <ScrollView>
+
+
+            <StackLayout Margin="5">
+                <CollectionView
+                    ItemsSource="{Binding Concerts}"
+                    SelectedItem="{Binding SelectedConcert, Mode=TwoWay}"
+                    SelectionMode="Single">
+                    <CollectionView.Behaviors>
+                        <behaviors:EventToCommandBehavior Command="{Binding NavigateToConcertCommand}" EventName="SelectionChanged" />
+                    </CollectionView.Behaviors>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Concert">
+                            <Border
+                                Margin="0,5"
+                                Padding="5"
+                                StrokeShape="RoundRectangle 10">
+                                <StackLayout Padding="10">
+                                    <Label FontSize="Title" Text="{Binding ConcertArtist}" />
+                                    <Label FontSize="Subtitle" Text="{Binding ConcertTitle}" />
+                                </StackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
