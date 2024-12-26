@@ -19,7 +19,8 @@ namespace GigGuide.MAUI
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .UseMauiMaps();
 
 #if DEBUG
     		builder.Logging.AddDebug();
