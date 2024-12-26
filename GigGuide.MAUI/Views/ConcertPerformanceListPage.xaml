@@ -60,7 +60,7 @@
                                     Grid.Column="1"
                                     Source="ticket_icon.svg">
                                     <Image.Behaviors>
-                                        <behaviors:IconTintColorBehavior TintColor="Red" />
+                                        <behaviors:IconTintColorBehavior TintColor="{Binding AvailabilityColor}" />
                                     </Image.Behaviors>
                                 </Image>
                             </Grid>

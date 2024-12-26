@@ -28,6 +28,9 @@ namespace GigGuide.MAUI.ViewModels
         [ObservableProperty]
         private string? bookingStatus;
 
+        [ObservableProperty]
+        private int maxQuantity;
+
         public BookingViewModel(IBookingService bookingService, ICustomerService customerService)
         {
             _bookingService = bookingService;
@@ -59,6 +62,7 @@ namespace GigGuide.MAUI.ViewModels
                 }
 
                 Quantity = Booking.BookingQuantity;
+                MaxQuantity = Performance.PerformanceTicketsAvailable + Quantity;
             }
             else
             {

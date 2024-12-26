@@ -15,5 +15,17 @@
         public string PerformanceLocation => $"{PerformanceVenue?.VenueName}, {PerformanceVenue?.VenueCity}, {PerformanceVenue?.VenueCountry}";
 
         public int PerformanceTicketsAvailable => PerformanceTotalTickets - PerformanceTicketsBooked;
+
+        public Color AvailabilityColor
+        {
+            get
+            {
+                if (PerformanceTicketsAvailable <= 0)
+                    return Colors.Red;
+                if (PerformanceTicketsAvailable < 100)
+                    return Colors.Orange;
+                return Colors.Green;
+            }
+        }
     }
 }
