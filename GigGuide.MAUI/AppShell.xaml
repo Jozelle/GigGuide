@@ -8,6 +8,9 @@
     Title="GigGuide.MAUI"
     Shell.FlyoutBehavior="Disabled">
 
+  
+    <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" Route="LoginPage" Shell.NavBarIsVisible="False" />
+
     <TabBar>
         <Tab Title="Concerts" Icon="ticket_icon.svg">
             <ShellContent ContentTemplate="{DataTemplate views:ConcertListPage}" Route="MainPage" />
@@ -16,7 +19,5 @@
             <ShellContent ContentTemplate="{DataTemplate views:CustomerPage}" Route="CustomerPage" />
         </Tab>
     </TabBar>
-    
-    <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" Route="LoginPage" />
 
 </Shell>
