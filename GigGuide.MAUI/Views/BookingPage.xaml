@@ -40,7 +40,7 @@
                 Grid.Column="0"
                 HorizontalOptions="Center"
                 Increment="1"
-                Maximum="10"
+                Maximum="{Binding MaxQuantity}"
                 Minimum="0"
                 Value="{Binding Quantity, Mode=TwoWay}">
                 <Stepper.Behaviors>
