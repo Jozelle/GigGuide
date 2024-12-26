@@ -10,34 +10,66 @@
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
-    <VerticalStackLayout>
-        <Label
-            FontSize="Title"
-            HorizontalOptions="Center"
-            Text="{Binding Performance.PerformanceConcert.ConcertArtist}"
-            VerticalOptions="Center" />
-        <Label
-            FontSize="Subtitle"
-            HorizontalOptions="Center"
-            Text="{Binding Performance.PerformanceConcert.ConcertTitle}"
-            VerticalOptions="Center" />
-        <Label
-            FontSize="Body"
-            HorizontalOptions="Center"
-            Text="{Binding Performance.PerformanceTime}"
-            VerticalOptions="Center" />
-        <Label
-            FontSize="Body"
-            HorizontalOptions="Center"
-            Text="{Binding Performance.PerformanceLocation}"
-            VerticalOptions="Center" />
+    <VerticalStackLayout Margin="5">
+        <Border
+            Margin="0,5,0,20"
+            Padding="5"
+            StrokeShape="RoundRectangle 10">
+            <VerticalStackLayout>
+                <Label
+                    FontSize="Title"
+                    HorizontalOptions="Center"
+                    Text="{Binding Performance.PerformanceConcert.ConcertArtist}"
+                    VerticalOptions="Center" />
+                <Label
+                    FontSize="Subtitle"
+                    HorizontalOptions="Center"
+                    Text="{Binding Performance.PerformanceConcert.ConcertTitle}"
+                    VerticalOptions="Center" />
+                <Label
+                    FontSize="Body"
+                    HorizontalOptions="Center"
+                    Text="{Binding Performance.PerformanceTime}"
+                    VerticalOptions="Center" />
+                <Label
+                    FontSize="Body"
+                    HorizontalOptions="Center"
+                    Text="{Binding Performance.PerformanceLocation}"
+                    VerticalOptions="Center" />
 
-        <!--  Plats för karta  -->
+                <!--  Plats för karta  -->
+            </VerticalStackLayout>
+        </Border>
 
-        <Grid ColumnDefinitions="2*, *">
+
+        <Grid ColumnDefinitions="*, 4*, *" RowDefinitions="Auto, Auto">
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Source="ticket_icon.svg">
+                <Image.Behaviors>
+                    <behaviors:IconTintColorBehavior TintColor="{Binding Performance.AvailabilityColor}" />
+                </Image.Behaviors>
+            </Image>
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                FontSize="Medium"
+                Text="XXX"
+                TextColor="{Binding Performance.AvailabilityColor}" />
+            <Image
+                Grid.Row="0"
+                Grid.Column="2"
+                Source="ticket_icon.svg">
+                <Image.Behaviors>
+                    <behaviors:IconTintColorBehavior TintColor="{Binding Performance.AvailabilityColor}" />
+                </Image.Behaviors>
+            </Image>
             <Stepper
                 x:Name="_stepper"
+                Grid.Row="1"
                 Grid.Column="0"
+                Grid.ColumnSpan="2"
                 HorizontalOptions="Center"
                 Increment="1"
                 Maximum="{Binding MaxQuantity}"
@@ -48,7 +80,8 @@
                 </Stepper.Behaviors>
             </Stepper>
             <Label
-                Grid.Column="1"
+                Grid.Row="1"
+                Grid.Column="3"
                 FontSize="Large"
                 Text="{Binding Source={x:Reference _stepper}, Path=Value}"
                 VerticalOptions="Center" />
