@@ -25,7 +25,7 @@ namespace GigGuide.API.Controllers
             return Ok(_mapper.Map<IEnumerable<Performance>>(await _unitOfWork.Performances.All()));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("ByConcert/{id}")]
         public async Task<IActionResult> GetPerformanceByConcert(int id)
         {
             return Ok(_mapper.Map<IEnumerable<Performance>>(await _unitOfWork.Performances.GetPerformancesByConcert(id)));

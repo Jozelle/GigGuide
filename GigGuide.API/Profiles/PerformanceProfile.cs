@@ -16,7 +16,7 @@ namespace GigGuide.API.Profiles
                 .ForMember(dest => dest.ConcertId, opt => opt.MapFrom(src => src.ConcertId))
                 .ForMember(dest => dest.VenueId, opt => opt.MapFrom(src => src.VenueId))
                 .ForMember(dest => dest.Venue, opt => opt.MapFrom(src => src.Venue))
-                ;
+                .ForMember(dest => dest.TicketsBooked, opt => opt.MapFrom(src => src.TicketsBooked));
 
             CreateMap<PerformanceDto, Performance>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
@@ -25,7 +25,7 @@ namespace GigGuide.API.Profiles
                 .ForMember(dest => dest.TicketsAvailable, opt => opt.MapFrom(src => src.TicketsAvailable))
                 .ForMember(dest => dest.ConcertId, opt => opt.MapFrom(src => src.ConcertId))
                 .ForMember(dest => dest.VenueId, opt => opt.MapFrom(src => src.VenueId))
-                ;
+                .ForMember(dest => dest.TicketsBooked, opt => opt.MapFrom(src => src.TicketsBooked));
         }
     }
 }
