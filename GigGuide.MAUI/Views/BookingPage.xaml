@@ -55,7 +55,7 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 FontSize="Medium"
-                Text="XXX"
+                Text="{Binding Performance.AvailabilityText}"
                 TextColor="{Binding Performance.AvailabilityColor}" />
             <Image
                 Grid.Row="0"

@@ -27,5 +27,17 @@
                 return Colors.Green;
             }
         }
+
+        public string AvailabilityText
+        {
+            get
+            {
+                if (PerformanceTicketsAvailable <= 0)
+                    return "The tickets for this performance is sold out!";
+                if (PerformanceTicketsAvailable < 100)
+                    return $"There is only {PerformanceTicketsAvailable} tickets left so hurry before they are sold out!";
+                return "There is more than 100 tickets left.";
+            }
+        }
     }
 }
