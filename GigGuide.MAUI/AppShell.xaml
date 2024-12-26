@@ -13,8 +13,10 @@
             <ShellContent ContentTemplate="{DataTemplate views:ConcertListPage}" Route="MainPage" />
         </Tab>
         <Tab Title="Account" Icon="account_icon.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:CustomerPage}" Route="MainPage" />
+            <ShellContent ContentTemplate="{DataTemplate views:CustomerPage}" Route="CustomerPage" />
         </Tab>
     </TabBar>
+    
+    <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" Route="LoginPage" />
 
 </Shell>
