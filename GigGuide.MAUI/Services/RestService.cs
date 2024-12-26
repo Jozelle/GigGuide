@@ -86,27 +86,56 @@ namespace GigGuide.MAUI.Services
             }
             return Performances;
         }
-        public async Task<Customer?> GetCustomer(int customerId) //Temporary fix
+        public async Task<Customer?> GetCustomer(int customerId) // Temporary fix
         {
-            Uri uri = new Uri(string.Format(Constants.RestUrl, "Customer", customerId));
+            if (loggedInCustomer == null)
+            {
+                Uri uri = new Uri(string.Format(Constants.RestUrl, "Customer", customerId));
+                try
+                {
+                    HttpResponseMessage response = await _client.GetAsync(uri);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string content = await response.Content.ReadAsStringAsync();
+                        loggedInCustomer = _mapper.Map<Customer>(
+                            JsonSerializer.Deserialize<CustomerDto>(content, _serializerOptions)
+                        );
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(@"\tERROR {0}", ex.Message);
+                }
+            }
+
+            return loggedInCustomer;
+        }
+
+        public async Task<Customer?> AuthenticateCustomerAsync(string email, string password)
+        {
+            Uri uri = new Uri($"{Constants.RestUrl}/Customer/login?email={email}&password={password}"); // Example API endpoint
+            Customer? customer = null;
+
             try
             {
                 HttpResponseMessage response = await _client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    loggedInCustomer = _mapper.Map<Customer>
-                    (
-                    JsonSerializer.Deserialize<CustomerDto>(content, _serializerOptions)
-                    );
+                    customer = JsonSerializer.Deserialize<Customer>(content, _serializerOptions);
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
-            return loggedInCustomer;
+
+            return customer;
         }
+
+
+
+
         public async Task<Booking?> GetBookingByPerformanceAndCustomerAsync(int performanceId, int customerId)
         {
             Booking? booking = null;

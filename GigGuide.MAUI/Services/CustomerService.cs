@@ -10,21 +10,20 @@ namespace GigGuide.MAUI.Services
         {
             _restService = restService;
 
-            //kOD FÖR ATT HÄMTA KUND 1 OCH SÄTTA  TILL LOGGEDINCUSTOMER
-            //loggedInCustomer = new Customer
-            //{
-            //    CustomerId = 1,
-            //    CustomerFirstName = "Johanna",
-            //    CustomerLastName = "Gull",
-            //    CustomerEmail = "johanna@datababes.se",
-            //    CustomerPhone = "070-6093654",
-
-            //};
+           
         }
 
         public async Task<Customer?> GetCustomerAsync(int id)
         {
             return await _restService.GetCustomer(id);
         }
+
+        public async Task<Customer?> LoginAsync(string email, string password)
+        {
+            return await _restService.AuthenticateCustomerAsync(email, password);
+        }
+       
+
+
     }
 }
