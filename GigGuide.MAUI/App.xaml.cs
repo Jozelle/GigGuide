@@ -15,10 +15,9 @@ namespace GigGuide.MAUI
 
         private async void GoToLoginPageIfNotLoggedIn()
         {
-           
             if (AppShell.CurrentCustomer == null) 
             {
-                await Shell.Current.GoToAsync(nameof(LoginPage));
+                await Shell.Current.GoToAsync("///LoginPage");
             }
         }
     }

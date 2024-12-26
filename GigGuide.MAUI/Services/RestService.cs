@@ -113,7 +113,9 @@ namespace GigGuide.MAUI.Services
 
         public async Task<Customer?> AuthenticateCustomerAsync(string email, string password)
         {
-            Uri uri = new Uri($"{Constants.RestUrl}/Customer/login?email={email}&password={password}"); // Example API endpoint
+           
+            Uri uri = new Uri($"{Constants.RestUrl}/Customer/login?email={Uri.EscapeDataString(email)}&password={Uri.EscapeDataString(password)}");
+
             Customer? customer = null;
 
             try
@@ -132,6 +134,7 @@ namespace GigGuide.MAUI.Services
 
             return customer;
         }
+
 
 
 

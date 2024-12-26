@@ -4,6 +4,7 @@ using GigGuide.Data.DTO;
 using GigGuide.Data.Entities;
 using GigGuide.Data.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace GigGuide.API.Controllers
 {
@@ -18,6 +19,8 @@ namespace GigGuide.API.Controllers
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
+
         [HttpGet]
         public async Task<IActionResult> List()
         {
@@ -87,6 +90,25 @@ namespace GigGuide.API.Controllers
             //return NoContent();
             return Ok(_mapper.Map<CustomerDto>(item));
         }
+        [HttpGet("login")]
+        public async Task<IActionResult> Login(string email, string password)
+        {
+            // Use the UnitOfWork to get the customer by credentials
+            var customer = await _unitOfWork.Customers.GetCustomerByCredentialsAsync(email, password);
+
+            if (customer == null)
+            {
+                return Unauthorized("Invalid email or password.");
+            }
+
+            var customerDto = _mapper.Map<CustomerDto>(customer);
+            return Ok(customerDto);
+        }
+
+
+
+
+
         //[HttpDelete("{id}")]
         //public async Task<IActionResult> Delete(int id)
         //{
