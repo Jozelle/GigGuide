@@ -4,6 +4,7 @@ using GigGuide.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GigGuide.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241226143457_AddedCordinates")]
+    partial class AddedCordinates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,27 +113,6 @@ namespace GigGuide.Data.Migrations
                             CustomerId = 2,
                             PerformanceId = 24,
                             Quantity = 3
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CustomerId = 3,
-                            PerformanceId = 1,
-                            Quantity = 7910
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CustomerId = 3,
-                            PerformanceId = 2,
-                            Quantity = 10000
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CustomerId = 3,
-                            PerformanceId = 4,
-                            Quantity = 5982
                         });
                 });
 
@@ -273,15 +255,6 @@ namespace GigGuide.Data.Migrations
                             LastName = "Swanpalmer",
                             Password = "Bosslady123",
                             Phone = "070-1234567"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "admin@datababes.se",
-                            FirstName = "Admin",
-                            LastName = "Testsson",
-                            Password = "admintest",
-                            Phone = "070-112233"
                         });
                 });
 
@@ -589,8 +562,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Arenavägen 35",
                             City = "Stockholm",
                             Country = "Sweden",
-                            Latitude = 59.293556000000002,
-                            Longitude = 18.083235999999999,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Avicii Arena"
                         },
                         new
@@ -599,8 +572,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Arenavägen 35",
                             City = "Stockholm",
                             Country = "Sweden",
-                            Latitude = 59.293556000000002,
-                            Longitude = 18.083235999999999,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Hovet"
                         },
                         new
@@ -609,8 +582,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Gumpekullavägen 1",
                             City = "Linköping",
                             Country = "Sweden",
-                            Latitude = 58.417245999999999,
-                            Longitude = 15.635679,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Saab Arena"
                         },
                         new
@@ -619,8 +592,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Arenavägen 4",
                             City = "Sandviken",
                             Country = "Sweden",
-                            Latitude = 60.608333000000002,
-                            Longitude = 16.769444,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Göransson Arena"
                         },
                         new
@@ -629,8 +602,8 @@ namespace GigGuide.Data.Migrations
                             Address = "John Strandrupsvei 16",
                             City = "Oslo",
                             Country = "Norway",
-                            Latitude = 59.903109999999998,
-                            Longitude = 10.62387,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Unity Arena"
                         },
                         new
@@ -639,8 +612,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Nordenskiöldinkatu 11-13",
                             City = "Helsinki",
                             Country = "Finland",
-                            Latitude = 60.189259999999997,
-                            Longitude = 24.922519999999999,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Helsinki Jäähalli"
                         },
                         new
@@ -649,8 +622,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Hannemanns Allé 18-20",
                             City = "Copenhagen",
                             Country = "Denmark",
-                            Latitude = 55.625410000000002,
-                            Longitude = 12.573689999999999,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Royal Arena"
                         },
                         new
@@ -659,8 +632,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Ekebergsletta",
                             City = "Oslo",
                             Country = "Norway",
-                            Latitude = 59.896079999999998,
-                            Longitude = 10.774699999999999,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Tons of Rock"
                         },
                         new
@@ -669,8 +642,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Gärdet",
                             City = "Stockholm",
                             Country = "Sweden",
-                            Latitude = 59.341529999999999,
-                            Longitude = 18.10463,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "STHLM Fields"
                         },
                         new
@@ -679,8 +652,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Tusindårsskoven",
                             City = "Falen, Odense V",
                             Country = "Denmark",
-                            Latitude = 55.279389999999999,
-                            Longitude = 10.342140000000001,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Tinderbox"
                         },
                         new
@@ -689,8 +662,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Arenaslingan 14",
                             City = "Stockholm",
                             Country = "Sweden",
-                            Latitude = 59.291220000000003,
-                            Longitude = 18.083220000000001,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Tele2 Arena"
                         },
                         new
@@ -699,8 +672,8 @@ namespace GigGuide.Data.Migrations
                             Address = "Stiklestadveien 2",
                             City = "Trondheim",
                             Country = "Norway",
-                            Latitude = 63.430489999999999,
-                            Longitude = 10.395060000000001,
+                            Latitude = 0.0,
+                            Longitude = 0.0,
                             Name = "Bryggeribyen - EC Dahls Arena"
                         });
                 });

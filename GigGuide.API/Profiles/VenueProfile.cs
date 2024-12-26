@@ -14,7 +14,8 @@ namespace GigGuide.API.Profiles
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
                 .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country))
-                ;
+                .ForMember(dest => dest.Longitude, opt => opt.MapFrom(src => src.Longitude))
+                .ForMember(dest => dest.Latitude, opt => opt.MapFrom(src => src.Latitude));
 
             CreateMap<VenueDto, Venue>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
@@ -22,7 +23,8 @@ namespace GigGuide.API.Profiles
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
                 .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country))
-                ;
+                .ForMember(dest => dest.Longitude, opt => opt.MapFrom(src => src.Longitude))
+                .ForMember(dest => dest.Latitude, opt => opt.MapFrom(src => src.Latitude));
 
 
         }

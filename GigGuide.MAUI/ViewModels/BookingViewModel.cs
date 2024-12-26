@@ -31,6 +31,9 @@ namespace GigGuide.MAUI.ViewModels
         [ObservableProperty]
         private int maxQuantity;
 
+        private ObservableCollection<Position> venueSpans;
+        public IEnumerable<Position> Positions => venueSpans;
+
         public BookingViewModel(IBookingService bookingService, ICustomerService customerService)
         {
             _bookingService = bookingService;
@@ -40,6 +43,14 @@ namespace GigGuide.MAUI.ViewModels
         [RelayCommand]
         public async Task Appearing()
         {
+            //venueSpans = new ObservableCollection<Position>();
+            //venueSpans.Add(new Position
+            //{
+            //    Address = Performance.PerformanceVenue.VenueAddress,
+            //    Description = Performance.PerformanceVenue.VenueName,
+            //    Location = new Location(Performance.PerformanceVenue.VenueLatitude, Performance.PerformanceVenue.VenueLongitude)
+            //});
+
             //Hämta ev inloggad kund
             customer = await _customerService.GetCustomerAsync(1);
 
@@ -63,6 +74,8 @@ namespace GigGuide.MAUI.ViewModels
 
                 Quantity = Booking.BookingQuantity;
                 MaxQuantity = Performance.PerformanceTicketsAvailable + Quantity;
+
+                await RefreshMap();
             }
             else
             {
@@ -106,6 +119,17 @@ namespace GigGuide.MAUI.ViewModels
 
                 BookingStatus = "You have currently booked " + Booking.BookingQuantity + " tickets for this performance.";
             }
+        }
+
+        public async Task RefreshMap()
+        {
+            venueSpans = new ObservableCollection<Position>();
+            venueSpans.Add(new Position
+            {
+                Address = Performance.PerformanceVenue.VenueAddress,
+                Description = Performance.PerformanceVenue.VenueName,
+                Location = new Location(Performance.PerformanceVenue.VenueLatitude, Performance.PerformanceVenue.VenueLongitude)
+            });
         }
     }
 }

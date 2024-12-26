@@ -23,5 +23,10 @@ namespace GigGuide.Data.Entities
         [MaxLength(30)]
         public required string Country { get; set; }
 
+        [Required]
+        public double Latitude { get; set; }
+        [Required]
+        public double Longitude { get; set; }
+
     }
 }

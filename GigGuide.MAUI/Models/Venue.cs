@@ -7,5 +7,7 @@
         public string VenueAddress { get; set; } = null!;
         public string VenueCity { get; set; } = null!;
         public string VenueCountry { get; set; } = null!;
+        public double VenueLatitude { get; set; }
+        public double VenueLongitude { get; set; }
     }
 }

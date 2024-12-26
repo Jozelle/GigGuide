@@ -50,8 +50,17 @@ namespace GigGuide.Data
                 Phone = "070-1234567",
                 Password = "Bosslady123"
             };
+            Customer customer3 = new Customer
+            {
+                Id = 3,
+                FirstName = "Admin",
+                LastName = "Testsson",
+                Email = "admin@datababes.se",
+                Phone = "070-112233",
+                Password = "admintest"
+            };
 
-            builder.Entity<Customer>().HasData(customer1, customer2);
+            builder.Entity<Customer>().HasData(customer1, customer2, customer3);
 
             Concert concert1 = new Concert
             {
@@ -118,7 +127,9 @@ namespace GigGuide.Data
                 Name = "Avicii Arena",
                 Address = "Arenavägen 35",
                 City = "Stockholm",
-                Country = "Sweden"
+                Country = "Sweden",
+                Latitude = 59.293556,
+                Longitude = 18.083236
             };
             Venue venue2 = new Venue
             {
@@ -126,7 +137,9 @@ namespace GigGuide.Data
                 Name = "Hovet",
                 Address = "Arenavägen 35",
                 City = "Stockholm",
-                Country = "Sweden"
+                Country = "Sweden",
+                Latitude = 59.293556,
+                Longitude = 18.083236
             };
             Venue venue3 = new Venue
             {
@@ -134,7 +147,9 @@ namespace GigGuide.Data
                 Name = "Saab Arena",
                 Address = "Gumpekullavägen 1",
                 City = "Linköping",
-                Country = "Sweden"
+                Country = "Sweden",
+                Latitude = 58.417246,
+                Longitude = 15.635679
             };
             Venue venue4 = new Venue
             {
@@ -142,7 +157,10 @@ namespace GigGuide.Data
                 Name = "Göransson Arena",
                 Address = "Arenavägen 4",
                 City = "Sandviken",
-                Country = "Sweden"
+                Country = "Sweden",
+                Latitude = 60.608333,
+                Longitude = 16.769444
+
             };
             Venue venue5 = new Venue
             {
@@ -150,7 +168,9 @@ namespace GigGuide.Data
                 Name = "Unity Arena",
                 Address = "John Strandrupsvei 16",
                 City = "Oslo",
-                Country = "Norway"
+                Country = "Norway",
+                Latitude = 59.90311,
+                Longitude = 10.62387
             };
             Venue venue6 = new Venue
             {
@@ -158,7 +178,9 @@ namespace GigGuide.Data
                 Name = "Helsinki Jäähalli",
                 Address = "Nordenskiöldinkatu 11-13",
                 City = "Helsinki",
-                Country = "Finland"
+                Country = "Finland",
+                Latitude = 60.18926,
+                Longitude = 24.92252
             };
             Venue venue7 = new Venue
             {
@@ -166,7 +188,9 @@ namespace GigGuide.Data
                 Name = "Royal Arena",
                 Address = "Hannemanns Allé 18-20",
                 City = "Copenhagen",
-                Country = "Denmark"
+                Country = "Denmark",
+                Latitude = 55.62541,
+                Longitude = 12.57369
             };
             Venue venue8 = new Venue
             {
@@ -174,7 +198,9 @@ namespace GigGuide.Data
                 Name = "Tons of Rock",
                 Address = "Ekebergsletta",
                 City = "Oslo",
-                Country = "Norway"
+                Country = "Norway",
+                Latitude = 59.89608,
+                Longitude = 10.77470
             };
             Venue venue9 = new Venue
             {
@@ -182,7 +208,9 @@ namespace GigGuide.Data
                 Name = "STHLM Fields",
                 Address = "Gärdet",
                 City = "Stockholm",
-                Country = "Sweden"
+                Country = "Sweden",
+                Latitude = 59.34153,
+                Longitude = 18.10463
             };
             Venue venue10 = new Venue
             {
@@ -190,7 +218,9 @@ namespace GigGuide.Data
                 Name = "Tinderbox",
                 Address = "Tusindårsskoven",
                 City = "Falen, Odense V",
-                Country = "Denmark"
+                Country = "Denmark",
+                Latitude = 55.27939,
+                Longitude = 10.34214
             };
             Venue venue11 = new Venue
             {
@@ -198,7 +228,9 @@ namespace GigGuide.Data
                 Name = "Tele2 Arena",
                 Address = "Arenaslingan 14",
                 City = "Stockholm",
-                Country = "Sweden"
+                Country = "Sweden",
+                Latitude = 59.29122,
+                Longitude = 18.08322
             };
             Venue venue12 = new Venue
             {
@@ -206,7 +238,9 @@ namespace GigGuide.Data
                 Name = "Bryggeribyen - EC Dahls Arena",
                 Address = "Stiklestadveien 2",
                 City = "Trondheim",
-                Country = "Norway"
+                Country = "Norway",
+                Latitude = 63.43049,
+                Longitude = 10.39506
             };
 
             builder.Entity<Venue>().HasData(venue1, venue2, venue3, venue4, venue5, venue6, venue7, venue8, venue9, venue10, venue11, venue12);
@@ -504,8 +538,29 @@ namespace GigGuide.Data
                 PerformanceId = 24, 
                 CustomerId = 2 
             };
+            Booking booking10 = new Booking
+            {
+                Id = 10,
+                Quantity = 7910,
+                PerformanceId = 1,
+                CustomerId = 3
+            };
+            Booking booking11 = new Booking
+            {
+                Id = 11,
+                Quantity = 10000,
+                PerformanceId = 2,
+                CustomerId = 3
+            };
+            Booking booking12 = new Booking
+            {
+                Id = 12,
+                Quantity = 5982,
+                PerformanceId = 4,
+                CustomerId = 3
+            };
 
-            builder.Entity<Booking>().HasData(booking1, booking2, booking3, booking4, booking5, booking6, booking7, booking8, booking9);
+            builder.Entity<Booking>().HasData(booking1, booking2, booking3, booking4, booking5, booking6, booking7, booking8, booking9, booking10, booking11, booking12);
         }
 
 

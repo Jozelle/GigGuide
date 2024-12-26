@@ -7,6 +7,7 @@
     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
     xmlns:models="clr-namespace:GigGuide.MAUI.Models"
+    xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
     Title="Booking">
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
@@ -39,12 +40,21 @@
                     VerticalOptions="Center" />
 
                 <!--  Plats för karta  -->
+                <!--  https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/map?view=net-maui-8.0#display-a-pin-collection  -->
+
                 <maps:Map
                     x:Name="map"
-                    Margin="10"
                     HeightRequest="300"
-                    MapType="Street"
-                    />
+                    ItemsSource="{Binding Positions}">
+                    <maps:Map.ItemTemplate>
+                        <DataTemplate>
+                            <maps:Pin
+                                Address="{Binding Address}"
+                                Label="{Binding Description}"
+                                Location="{Binding Location}" />
+                        </DataTemplate>
+                    </maps:Map.ItemTemplate>
+                </maps:Map>
             </VerticalStackLayout>
         </Border>
 
