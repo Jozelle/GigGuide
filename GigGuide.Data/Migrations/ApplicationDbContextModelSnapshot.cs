@@ -654,7 +654,7 @@ namespace GigGuide.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("GigGuide.Data.Entities.Performance", "Performance")
-                        .WithMany()
+                        .WithMany("Bookings")
                         .HasForeignKey("PerformanceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -681,6 +681,11 @@ namespace GigGuide.Data.Migrations
                     b.Navigation("Concert");
 
                     b.Navigation("Venue");
+                });
+
+            modelBuilder.Entity("GigGuide.Data.Entities.Performance", b =>
+                {
+                    b.Navigation("Bookings");
                 });
 #pragma warning restore 612, 618
         }
