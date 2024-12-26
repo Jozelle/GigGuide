@@ -36,10 +36,35 @@
                 </CollectionView.Behaviors>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Performance">
-                        <StackLayout Padding="10">
-                            <Label FontSize="Medium" Text="{Binding PerformanceLocation}" />
-                            <Label FontSize="Subtitle" Text="{Binding PerformanceTime}" />
-                        </StackLayout>
+                        <Border
+                            Margin="0,5"
+                            Padding="5"
+                            StrokeShape="RoundRectangle 10">
+                            <Grid
+                                Padding="10"
+                                ColumnDefinitions="*, Auto"
+                                RowDefinitions="Auto, Auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontSize="Medium"
+                                    Text="{Binding PerformanceLocation}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    FontSize="Subtitle"
+                                    Text="{Binding PerformanceTime}" />
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    Source="ticket_icon.svg">
+                                    <Image.Behaviors>
+                                        <behaviors:IconTintColorBehavior TintColor="Red" />
+                                    </Image.Behaviors>
+                                </Image>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -103,26 +103,5 @@ namespace GigGuide.MAUI.ViewModels
                 BookingStatus = "You have currently booked " + Booking.BookingQuantity + " tickets for this performance.";
             }
         }
-
-        [RelayCommand]
-        public async Task SaveBooking()
-        {
-            if (customer != null)
-            {
-                //Booking.BookingQuantity = Quantity;
-                //Booking.BookingCustomerId = customer.CustomerId;
-                //Booking.BookingPerformanceId = Performance.PerformanceId;
-
-                //bool isNewItem = Booking.BookingId == default;
-
-                //await _bookingService.SaveBookingAsync(Booking, isNewItem);
-
-                // Optionally, navigate away or show a confirmation message
-            }
-            else
-            {
-                // Prompt the user to log in if no customer is logged in
-            }
-        }
     }
 }
