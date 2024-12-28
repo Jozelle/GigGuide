@@ -20,7 +20,7 @@ namespace GigGuide.MAUI.Services
 
         public async Task<Customer?> LoginAsync(string email, string password)
         {
-            return await _restService.AuthenticateCustomerAsync(email, password);
+            return await _restService.AuthenticateCustomerAsync2(email, password);
         }
        
 

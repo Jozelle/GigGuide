@@ -12,5 +12,6 @@ namespace GigGuide.MAUI.Services.Interfaces
         Task<Booking> SaveBookingAsync(Booking item, bool isNewItem);
         Task DeleteBookingAsync(int id);
         Task<Customer?> AuthenticateCustomerAsync(string email, string password);
+        Task<Customer?> AuthenticateCustomerAsync2(string email, string password);
     }
 }

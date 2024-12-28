@@ -46,9 +46,10 @@ namespace GigGuide.MAUI.ViewModels
                 if (customer != null)
                 {
                     // Login successful
-                    AppShell.CurrentCustomer = customer;
-                    await Shell.Current.GoToAsync($"//{nameof(ConcertListPage)}");
-                }
+                    //AppShell.CurrentCustomer = customer;
+                    //await Shell.Current.GoToAsync($"//{nameof(ConcertListPage)}");
+                    await Shell.Current.GoToAsync("ConcertListPage");
+            }
                 else
                 {
                     ErrorMessage = "Invalid email or password.";
