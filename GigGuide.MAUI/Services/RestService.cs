@@ -134,7 +134,30 @@ namespace GigGuide.MAUI.Services
 
             return customer;
         }
+        public async Task<Customer?> AuthenticateCustomerAsync2(string email, string password)
+        {
 
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Customer", $"Login/{email}/{password}"));
+
+            Customer? customer = null;
+
+            try
+            {
+                HttpResponseMessage response = await _client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    customer = JsonSerializer.Deserialize<Customer>(content, _serializerOptions);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            loggedInCustomer = customer;
+            return loggedInCustomer;
+        }
 
 
 

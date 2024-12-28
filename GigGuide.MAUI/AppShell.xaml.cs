@@ -14,6 +14,7 @@ namespace GigGuide.MAUI
            
 
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(ConcertListPage), typeof(ConcertListPage));
             Routing.RegisterRoute(nameof(ConcertPerformanceListPage), typeof(ConcertPerformanceListPage));
             Routing.RegisterRoute(nameof(BookingPage), typeof(BookingPage));
             Routing.RegisterRoute(nameof(CustomerPage), typeof(CustomerPage));

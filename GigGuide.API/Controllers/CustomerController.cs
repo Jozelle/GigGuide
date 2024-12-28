@@ -105,8 +105,19 @@ namespace GigGuide.API.Controllers
             return Ok(customerDto);
         }
 
+        [HttpGet("Login/{email}/{password}")]
+        public async Task<IActionResult> LoginCustomer(string email, string password)
+        {
+            // Use the UnitOfWork to get the customer by credentials
+            var customer = await _unitOfWork.Customers.GetCustomerByCredentialsAsync(email, password);
 
+            if (customer == null)
+            {
+                return Unauthorized("Invalid email or password.");
+            }
 
+            return Ok(_mapper.Map<CustomerDto>(customer));
+        }
 
 
         //[HttpDelete("{id}")]
