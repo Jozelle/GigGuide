@@ -18,12 +18,21 @@ namespace GigGuide.MAUI.Services
             return await _restService.GetCustomer(id);
         }
 
+        public Customer? GetCurrentCustomer()
+        {
+            return  _restService.GetCurrentCustomer();
+        }
+
         public async Task<Customer?> LoginAsync(string email, string password)
         {
             return await _restService.AuthenticateCustomerAsync2(email, password);
         }
        
-
+        public bool IsLoggedIn()
+        {
+            //return await SecureStorage.GetAsync("token") != null;
+            return _restService.IsLoggedIn();
+        }
 
     }
 }

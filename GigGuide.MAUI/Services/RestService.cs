@@ -134,6 +134,17 @@ namespace GigGuide.MAUI.Services
 
             return customer;
         }
+
+        public Customer? GetCurrentCustomer()
+        {
+            return loggedInCustomer;
+        }
+
+        public bool IsLoggedIn()
+        {
+            return loggedInCustomer != null;
+        }
+
         public async Task<Customer?> AuthenticateCustomerAsync2(string email, string password)
         {
 
@@ -147,7 +158,9 @@ namespace GigGuide.MAUI.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    customer = JsonSerializer.Deserialize<Customer>(content, _serializerOptions);
+                    customer = _mapper.Map<Customer>(
+                        JsonSerializer.Deserialize<CustomerDto>(content, _serializerOptions)
+                    );
                 }
             }
             catch (Exception ex)

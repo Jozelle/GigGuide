@@ -10,7 +10,7 @@ namespace GigGuide.MAUI
 
             MainPage = new AppShell();
 
-            GoToLoginPageIfNotLoggedIn();
+            //GoToLoginPageIfNotLoggedIn();
         }
 
         private async void GoToLoginPageIfNotLoggedIn()
