@@ -10,7 +10,7 @@
 
   
     <!--<ShellContent ContentTemplate="{DataTemplate views:LoginPage}" Route="LoginPage" Shell.NavBarIsVisible="False" />-->
-
+    
     <TabBar>
         <Tab Title="Concerts" Icon="ticket_icon.svg">
             <ShellContent ContentTemplate="{DataTemplate views:ConcertListPage}" Route="MainPage" />
