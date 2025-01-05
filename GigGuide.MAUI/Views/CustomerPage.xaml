@@ -27,13 +27,32 @@
             <Label Text="{Binding CurrentCustomer.CustomerFirstName}" />
             <Label Text="{Binding CurrentCustomer.CustomerLastName}" />
 
-            <Label Text="{Binding CurrentCustomer.CustomerEmail}" />
-            <Button Command="{Binding UpdateEmailCommand}" Text="Update Email" />
+            <!-- Email Update Section -->
+            <Label Text="Current Email:" FontAttributes="Bold" FontSize="Small" />
+            <Label Text="{Binding CurrentCustomer.CustomerEmail}" x:Name="CurrentEmailLabel" />
+
+            <Button Text="Update Email" Command="{Binding ShowEmailEditCommand}" />
+
+            <StackLayout IsVisible="{Binding IsEmailEditVisible}">
+                <Entry Text="{Binding NewEmail}" Placeholder="Enter new email" />
+                <Label Text="{Binding EmailError}" TextColor="Red" IsVisible="{Binding IsErrorVisible}" />
+                <Button Text="Save Email" Command="{Binding UpdateEmailCommand}" />
+                <Button Text="Cancel" Command="{Binding CancelEmailEditCommand}" />
+            </StackLayout>
 
             <Label Text="{Binding CurrentCustomer.CustomerPhone}" />
 
-            <Button Command="{Binding ChangePasswordCommand}" Text="Change Password" />
+            <!-- Password Change Section -->
+            <Label Text="Change Password" FontAttributes="Bold" FontSize="Small" />
+            <Button Text="Change Password" Command="{Binding ShowPasswordEditCommand}" />
 
+            <StackLayout IsVisible="{Binding IsPasswordEditVisible}">
+                <Entry Text="{Binding NewPassword}" Placeholder="Enter new password" IsPassword="True"/>
+                <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm new password" IsPassword="True"/>
+                <Label Text="{Binding PasswordError}" TextColor="Red" IsVisible="{Binding IsPasswordErrorVisible}" />
+                <Button Text="Save Password" Command="{Binding ChangePasswordCommand}" />
+                <Button Text="Cancel" Command="{Binding CancelPasswordEditCommand}" />
+            </StackLayout>
             <!--  My Bookings Section  -->
             <Label
                 Margin="0,20,0,10"
@@ -61,12 +80,9 @@
                                 <Label FontSize="Small" Text="{Binding BookingQuantity, StringFormat='{}{0} tickets'}" />
                             </StackLayout>
                         </Border>
-
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
