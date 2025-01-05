@@ -67,7 +67,7 @@ namespace GigGuide.MAUI.Services
         {
             Performances = new List<Performance>();
 
-            Uri uri = new Uri(string.Format(Constants.RestUrl, "Performance", id));
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Performance", $"ByConcert/{id}"));
             try
             {
                 HttpResponseMessage response = await _client.GetAsync(uri);
