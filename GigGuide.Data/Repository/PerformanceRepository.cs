@@ -24,6 +24,7 @@ namespace GigGuide.Data.Repository
         {
             return await DbContext.Performances.Where(p => p.ConcertId == id)
                 .Include(p => p.Venue)
+                .Include(p => p.Bookings)
                 .ToListAsync<Performance>();
         }
 

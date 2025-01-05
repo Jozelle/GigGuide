@@ -11,27 +11,31 @@
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
     <ContentPage.Content>
-        <StackLayout>
-            
-            <controls:SwipeContainer Swipe="OnSwiped">
-                <!-- Wrap CollectionView with SwipeContainer -->
+
+        <ScrollView>
+            <StackLayout Margin="5">
                 <CollectionView
-                ItemsSource="{Binding Concerts}"
-                SelectedItem="{Binding SelectedConcert, Mode=TwoWay}"
-                SelectionMode="Single">
+                    ItemsSource="{Binding Concerts}"
+                    SelectedItem="{Binding SelectedConcert, Mode=TwoWay}"
+                    SelectionMode="Single">
                     <CollectionView.Behaviors>
                         <behaviors:EventToCommandBehavior Command="{Binding NavigateToConcertCommand}" EventName="SelectionChanged" />
                     </CollectionView.Behaviors>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Concert">
-                            <StackLayout Padding="10">
-                                <Label FontSize="Title" Text="{Binding ConcertArtist}" />
-                                <Label FontSize="Subtitle" Text="{Binding ConcertTitle}" />
-                            </StackLayout>
+                            <Border
+                                Margin="0,5"
+                                Padding="5"
+                                StrokeShape="RoundRectangle 10">
+                                <StackLayout Padding="10">
+                                    <Label FontSize="Title" Text="{Binding ConcertArtist}" />
+                                    <Label FontSize="Subtitle" Text="{Binding ConcertTitle}" />
+                                </StackLayout>
+                            </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </controls:SwipeContainer>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
