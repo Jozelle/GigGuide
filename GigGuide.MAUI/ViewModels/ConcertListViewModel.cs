@@ -10,6 +10,7 @@ namespace GigGuide.MAUI.ViewModels
     public partial class ConcertListViewModel
     {
         private readonly IConcertService _concertService;
+        private readonly ICustomerService _customerService;
 
         [ObservableProperty]
         private ObservableCollection<Concert> concerts = new ObservableCollection<Concert>();
@@ -17,15 +18,21 @@ namespace GigGuide.MAUI.ViewModels
         [ObservableProperty]
         private Concert? selectedConcert;
 
-        public ConcertListViewModel(IConcertService concertService)
+        public ConcertListViewModel(IConcertService concertService, ICustomerService customerService)
         {
-            _concertService = concertService; 
+            _concertService = concertService;
+            _customerService = customerService;
         }
 
         [RelayCommand]
         public async Task Appearing()
         {
-            Concerts = new(await _concertService.GetConcertsAsync() ?? []);
+            if (_customerService.IsLoggedIn() == false)
+            {
+                await Shell.Current.GoToAsync("LoginPage");
+            }
+            else { Concerts = new(await _concertService.GetConcertsAsync() ?? []); }
+                
         }
 
         //[RelayCommand]
@@ -53,6 +60,12 @@ namespace GigGuide.MAUI.ViewModels
                 { nameof(Concert), SelectedConcert }
             };
             await Shell.Current.GoToAsync("ConcertPerformanceListPage", navigationParameter);
+        }
+
+        [RelayCommand]
+        public async Task NavigateToLogin()
+        {
+            await Shell.Current.GoToAsync("LoginPage");
         }
     }
 }

@@ -41,7 +41,7 @@ namespace GigGuide.MAUI.ViewModels
         public async Task Appearing()
         {
             //Hämta ev inloggad kund
-            customer = await _customerService.GetCustomerAsync(1);
+            customer = _customerService.GetCurrentCustomer();
 
             // Hämta bokning för performance och "current customer"
             if (customer != null)

@@ -4,6 +4,7 @@ using GigGuide.MAUI.Services.Interfaces;
 using GigGuide.MAUI.ViewModels;
 using GigGuide.MAUI.Views;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace GigGuide.MAUI
 {
@@ -40,12 +41,20 @@ namespace GigGuide.MAUI
             builder.Services.AddTransient<ConcertPerformanceListPage>();
             builder.Services.AddTransient<BookingPage>();
             builder.Services.AddSingleton<CustomerPage>();
+            builder.Services.AddTransient<LoginPage>();
+
 
             // ViewModels
             builder.Services.AddSingleton<ConcertListViewModel>();
             builder.Services.AddTransient<ConcertPerformanceListViewModel>();
             builder.Services.AddTransient<BookingViewModel>();
             builder.Services.AddSingleton<CustomerViewModel>();
+            builder.Services.AddTransient<LoginViewModel>();
+
+            //var loginPage = builder.Services.BuildServiceProvider().GetService<LoginPage>();
+            //Debug.Assert(loginPage != null, "LoginPage was not resolved by DI!");
+
+
 
             return builder.Build();
         }
