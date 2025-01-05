@@ -1,6 +1,7 @@
 ﻿using GigGuide.Data.Entities;
 using GigGuide.Data.Repository.Base;
 using GigGuide.Data.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace GigGuide.Data.Repository
 {
@@ -38,6 +39,15 @@ namespace GigGuide.Data.Repository
             Customer? customer = DbContext.Customers.Find(id);
             if (customer is not null)
                 DbContext.Customers.Remove(customer);
+        }
+        public async Task<Customer?> GetCustomerByCredentialsAsync(string email, string password)
+        {
+            return await DbContext.Customers
+                .FirstOrDefaultAsync(c => c.Email == email && c.Password == password);
+        }
+        public async Task<Customer?> FirstOrDefaultAsync(Func<object, bool> value)
+        {
+            return await DbContext.Customers.FirstOrDefaultAsync(c => value(c));
         }
     }
 }

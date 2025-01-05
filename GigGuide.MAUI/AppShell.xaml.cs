@@ -1,16 +1,26 @@
-﻿using GigGuide.MAUI.Views;
+﻿using GigGuide.MAUI.Models;
+using GigGuide.MAUI.Views;
 
 namespace GigGuide.MAUI
 {
     public partial class AppShell : Shell
     {
+        public static Customer? CurrentCustomer { get; set; }
+
         public AppShell()
         {
             InitializeComponent();
 
+           
+
+            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(ConcertListPage), typeof(ConcertListPage));
             Routing.RegisterRoute(nameof(ConcertPerformanceListPage), typeof(ConcertPerformanceListPage));
             Routing.RegisterRoute(nameof(BookingPage), typeof(BookingPage));
             Routing.RegisterRoute(nameof(CustomerPage), typeof(CustomerPage));
+
+            
         }
+
     }
 }

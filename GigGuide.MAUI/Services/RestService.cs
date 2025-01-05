@@ -86,18 +86,80 @@ namespace GigGuide.MAUI.Services
             }
             return Performances;
         }
-        public async Task<Customer?> GetCustomer(int customerId) //Temporary fix
+        public async Task<Customer?> GetCustomer(int customerId) // Temporary fix
         {
-            Uri uri = new Uri(string.Format(Constants.RestUrl, "Customer", customerId));
+            if (loggedInCustomer == null)
+            {
+                Uri uri = new Uri(string.Format(Constants.RestUrl, "Customer", customerId));
+                try
+                {
+                    HttpResponseMessage response = await _client.GetAsync(uri);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string content = await response.Content.ReadAsStringAsync();
+                        loggedInCustomer = _mapper.Map<Customer>(
+                            JsonSerializer.Deserialize<CustomerDto>(content, _serializerOptions)
+                        );
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(@"\tERROR {0}", ex.Message);
+                }
+            }
+
+            return loggedInCustomer;
+        }
+
+        public async Task<Customer?> AuthenticateCustomerAsync(string email, string password)
+        {
+           
+            Uri uri = new Uri($"{Constants.RestUrl}/Customer/login?email={Uri.EscapeDataString(email)}&password={Uri.EscapeDataString(password)}");
+
+            Customer? customer = null;
+
             try
             {
                 HttpResponseMessage response = await _client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    loggedInCustomer = _mapper.Map<Customer>
-                    (
-                    JsonSerializer.Deserialize<CustomerDto>(content, _serializerOptions)
+                    customer = JsonSerializer.Deserialize<Customer>(content, _serializerOptions);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return customer;
+        }
+
+        public Customer? GetCurrentCustomer()
+        {
+            return loggedInCustomer;
+        }
+
+        public bool IsLoggedIn()
+        {
+            return loggedInCustomer != null;
+        }
+
+        public async Task<Customer?> AuthenticateCustomerAsync2(string email, string password)
+        {
+
+            Uri uri = new Uri(string.Format(Constants.RestUrl, "Customer", $"Login/{email}/{password}"));
+
+            Customer? customer = null;
+
+            try
+            {
+                HttpResponseMessage response = await _client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    customer = _mapper.Map<Customer>(
+                        JsonSerializer.Deserialize<CustomerDto>(content, _serializerOptions)
                     );
                 }
             }
@@ -105,8 +167,14 @@ namespace GigGuide.MAUI.Services
             {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
+
+            loggedInCustomer = customer;
             return loggedInCustomer;
         }
+
+
+
+
         public async Task<Booking?> GetBookingByPerformanceAndCustomerAsync(int performanceId, int customerId)
         {
             Booking? booking = null;

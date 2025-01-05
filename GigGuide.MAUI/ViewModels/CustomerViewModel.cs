@@ -36,7 +36,7 @@ namespace GigGuide.MAUI.ViewModels
         [RelayCommand]
         public async Task Appearing()
         {
-            CurrentCustomer = await _customerService.GetCustomerAsync(1);
+            CurrentCustomer = _customerService.GetCurrentCustomer();
 
             if (CurrentCustomer != null)
             {
