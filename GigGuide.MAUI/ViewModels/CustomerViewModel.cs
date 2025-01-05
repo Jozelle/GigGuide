@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using GigGuide.MAUI.Models;
 using GigGuide.MAUI.Services.Interfaces;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
 
 namespace GigGuide.MAUI.ViewModels
 {
@@ -24,14 +26,104 @@ namespace GigGuide.MAUI.ViewModels
         [ObservableProperty]
         private ObservableCollection<Booking> myBookings = new ObservableCollection<Booking>();
 
-        //public ICommand ChangePasswordCommand { get; }
-        //public ICommand UpdateEmailCommand { get; }
+        [ObservableProperty]
+        private bool isEmailEditVisible;
+
+        [ObservableProperty]
+        private bool isPasswordEditVisible;
+
+        [ObservableProperty]
+        private string newEmail;
+
+        [ObservableProperty]
+        private string newPassword;
+
+        [ObservableProperty]
+        private string confirmPassword;
+
+        [ObservableProperty]
+        private string emailError;
+
+        [ObservableProperty]
+        private string passwordError;
+
+        [ObservableProperty]
+        private bool isErrorVisible;
+
+        [ObservableProperty]
+        private bool isPasswordErrorVisible;
+
+        public ICommand ChangePasswordCommand { get; }
+        public ICommand UpdateEmailCommand { get; }
+
+        public ICommand ShowEmailEditCommand => new RelayCommand(() =>
+        {
+            IsEmailEditVisible = true; // Show the email edit section
+        });
+
+        public ICommand ShowPasswordEditCommand => new RelayCommand(() =>
+        {
+            IsPasswordEditVisible = true; // Show the password edit section
+        });
 
         public CustomerViewModel(ICustomerService customerService, IBookingService bookingService)
         {
             _customerService = customerService;
             _bookingService = bookingService;
+
+            ChangePasswordCommand = new RelayCommand(OnChangePassword);
+            UpdateEmailCommand = new RelayCommand(OnUpdateEmail);
+            IsEmailEditVisible = false; // Initially hidden
+            IsPasswordEditVisible = false; // Initially hidden
+            IsErrorVisible = false; // Initially hidden
+            IsPasswordErrorVisible = false; // Initially hidden
         }
+
+        private void OnUpdateEmail()
+        {
+            if (string.IsNullOrWhiteSpace(NewEmail) || !IsValidEmail(NewEmail))
+            {
+                EmailError = "Please enter a valid email.";
+                IsErrorVisible = true;
+            }
+            else
+            {
+                // Add logic to update the email in the database or service
+                IsEmailEditVisible = false; // Hide after update
+                IsErrorVisible = false; // Reset error visibility
+            }
+        }
+
+        private void OnChangePassword()
+        {
+            if (string.IsNullOrWhiteSpace(NewPassword) || NewPassword != ConfirmPassword)
+            {
+                PasswordError = "Passwords do not match.";
+                IsPasswordErrorVisible = true;
+            }
+            else
+            {
+                // Add logic to change the password in the database or service
+                IsPasswordEditVisible = false; // Hide after change
+                IsPasswordErrorVisible = false; // Reset error visibility
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, emailPattern);
+        }
+
+        public ICommand CancelEmailEditCommand => new RelayCommand(() =>
+        {
+            IsEmailEditVisible = false;
+        });
+
+        public ICommand CancelPasswordEditCommand => new RelayCommand(() =>
+        {
+            IsPasswordEditVisible = false;
+        });
 
         [RelayCommand]
         public async Task Appearing()
