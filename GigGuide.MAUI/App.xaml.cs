@@ -9,16 +9,7 @@ namespace GigGuide.MAUI
             InitializeComponent();
 
             MainPage = new AppShell();
-
-            //GoToLoginPageIfNotLoggedIn();
         }
 
-        private async void GoToLoginPageIfNotLoggedIn()
-        {
-            if (AppShell.CurrentCustomer == null) 
-            {
-                await Shell.Current.GoToAsync("///LoginPage");
-            }
-        }
     }
 }

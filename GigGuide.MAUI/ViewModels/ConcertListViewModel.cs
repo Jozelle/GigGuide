@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using GigGuide.MAUI.Models;
 using GigGuide.MAUI.Services.Interfaces;
+using GigGuide.MAUI.Views;
 using System.Collections.ObjectModel;
 
 namespace GigGuide.MAUI.ViewModels
@@ -27,29 +28,13 @@ namespace GigGuide.MAUI.ViewModels
         [RelayCommand]
         public async Task Appearing()
         {
-            if (_customerService.IsLoggedIn() == false)
-            {
-                await Shell.Current.GoToAsync("LoginPage");
-            }
-            else { Concerts = new(await _concertService.GetConcertsAsync() ?? []); }
-                
+            //if (_customerService.IsLoggedIn() == false)
+            //{
+            //    await Shell.Current.GoToAsync("LoginPage");
+            //}
+            //else { Concerts = new(await _concertService.GetConcertsAsync() ?? []); }
+            Concerts = new(await _concertService.GetConcertsAsync() ?? []);
         }
-
-        //[RelayCommand]
-        //public async Task NavigateToConcert(Concert concert)
-        //{
-        //    if (concert != null)
-        //    {
-        //        try
-        //        {
-        //            await Shell.Current.GoToAsync($"concertperformance?Concert={concert.ConcertId}");
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            await Shell.Current.DisplayAlert("Error", "Failed to navigate to concert", "OK");
-        //        }
-        //    }    
-        //}
 
         [RelayCommand]
         public async Task NavigateToConcert()
@@ -59,13 +44,7 @@ namespace GigGuide.MAUI.ViewModels
             {
                 { nameof(Concert), SelectedConcert }
             };
-            await Shell.Current.GoToAsync("ConcertPerformanceListPage", navigationParameter);
-        }
-
-        [RelayCommand]
-        public async Task NavigateToLogin()
-        {
-            await Shell.Current.GoToAsync("LoginPage");
+            await Shell.Current.GoToAsync(nameof(ConcertPerformanceListPage), navigationParameter);
         }
     }
 }
