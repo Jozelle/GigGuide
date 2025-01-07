@@ -8,16 +8,37 @@
     Title="GigGuide.MAUI"
     Shell.FlyoutBehavior="Disabled">
 
-  
-    <!--<ShellContent ContentTemplate="{DataTemplate views:LoginPage}" Route="LoginPage" Shell.NavBarIsVisible="False" />-->
-    
+
+    <ShellContent
+        Title="Loading"
+        ContentTemplate="{DataTemplate views:LoadingPage}"
+        Route="LoadingPage"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.FlyoutItemIsVisible="False" />
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="LoginPage"
+        Shell.FlyoutBehavior="Disabled"
+        Shell.FlyoutItemIsVisible="False" />
+
     <TabBar>
-        <Tab Title="Concerts" Icon="ticket_icon.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:ConcertListPage}" Route="MainPage" />
-        </Tab>
-        <Tab Title="Account" Icon="account_icon.svg">
-            <ShellContent ContentTemplate="{DataTemplate views:CustomerPage}" Route="CustomerPage" />
-        </Tab>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Icon="home_icon.svg"
+            Route="MainPage" />
+        <ShellContent
+            Title="Concerts"
+            ContentTemplate="{DataTemplate views:ConcertListPage}"
+            Icon="ticket_icon.svg"
+            Route="ConcertListPageTab" />
+        <ShellContent
+            Title="Account"
+            ContentTemplate="{DataTemplate views:CustomerPage}"
+            Icon="account_icon.svg"
+            Route="CustomerPage" />
     </TabBar>
 
 </Shell>
