@@ -9,7 +9,7 @@
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
-    <VerticalStackLayout>
+    <VerticalStackLayout Margin="5">
         <Label
             FontSize="Title"
             HorizontalOptions="Center"
