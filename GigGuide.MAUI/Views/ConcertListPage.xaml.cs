@@ -10,8 +10,9 @@ public partial class ConcertListPage : ContentPage
     {
         InitializeComponent();
         BindingContext = viewModel;
-        //Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsEnabled = false });
-        Shell.SetNavBarIsVisible(this, false); // Hides the back arrow
+        Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsEnabled = false });
+        //Shell.SetNavBarIsVisible(this, false); // Hides the back arrow
+
     }
 
     //private  void OnSwiped(object sender, SwipedEventArgs e)

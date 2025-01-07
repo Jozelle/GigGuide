@@ -15,12 +15,5 @@ namespace GigGuide.MAUI.Views
         {
             BindingContext = viewModel;
         }
-        protected override bool OnBackButtonPressed()
-        {
-            // Prevent the back button from being used
-            return true;
-        }
-
-
     }
 }

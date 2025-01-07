@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using GigGuide.MAUI.Models;
 using GigGuide.MAUI.Services.Interfaces;
+using GigGuide.MAUI.Views;
 using System.Collections.ObjectModel;
 
 
@@ -43,7 +44,7 @@ namespace GigGuide.MAUI.ViewModels
             {
                 { nameof(Performance), SelectedPerformance }
             };
-            await Shell.Current.GoToAsync("BookingPage", navigationParameter);
+            await Shell.Current.GoToAsync(nameof(BookingPage), navigationParameter);
         }
     }
 }

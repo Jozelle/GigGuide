@@ -37,6 +37,8 @@ namespace GigGuide.MAUI
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // Pages
+            builder.Services.AddSingleton<LoadingPage>();
+            builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<ConcertListPage>();
             builder.Services.AddTransient<ConcertPerformanceListPage>();
             builder.Services.AddTransient<BookingPage>();
