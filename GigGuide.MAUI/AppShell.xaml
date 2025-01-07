@@ -23,7 +23,7 @@
         Shell.FlyoutBehavior="Disabled"
         Shell.FlyoutItemIsVisible="False" />
 
-    <TabBar x:Name="main" Route="Main">
+    <TabBar>
         <ShellContent
             Title="Home"
             ContentTemplate="{DataTemplate views:MainPage}"
@@ -33,7 +33,7 @@
             Title="Concerts"
             ContentTemplate="{DataTemplate views:ConcertListPage}"
             Icon="ticket_icon.svg"
-            Route="ConcertListPage" />
+            Route="ConcertListPageTab" />
         <ShellContent
             Title="Account"
             ContentTemplate="{DataTemplate views:CustomerPage}"
