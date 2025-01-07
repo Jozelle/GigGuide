@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:models="clr-namespace:GigGuide.MAUI.Models"
-    Title="Performances">
+    Title="Performances"
+    BackgroundImageSource="Images/background.jpg">
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
@@ -39,6 +40,7 @@
                             <Border
                                 Margin="0,5"
                                 Padding="5"
+                                BackgroundColor="FloralWhite"
                                 StrokeShape="RoundRectangle 10">
                                 <Grid
                                     Padding="10"
