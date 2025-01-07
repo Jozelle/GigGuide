@@ -6,7 +6,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:models="clr-namespace:GigGuide.MAUI.Models"
-    Title="Booking">
+    Title="Booking"
+    BackgroundImageSource="Images/background.jpg">
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
@@ -14,6 +15,7 @@
         <Border
             Margin="0,5,0,20"
             Padding="5"
+            BackgroundColor="FloralWhite"
             StrokeShape="RoundRectangle 10">
             <VerticalStackLayout>
                 <Label
@@ -41,56 +43,63 @@
             </VerticalStackLayout>
         </Border>
 
+        <Border
+            Margin="0,5,0,20"
+            Padding="5"
+            BackgroundColor="FloralWhite"
+            StrokeShape="RoundRectangle 10">
+            <Grid ColumnDefinitions="*, 4*, *" RowDefinitions="Auto, Auto, Auto">
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Source="ticket_icon.svg">
+                    <Image.Behaviors>
+                        <behaviors:IconTintColorBehavior TintColor="{Binding Performance.AvailabilityColor}" />
+                    </Image.Behaviors>
+                </Image>
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="Medium"
+                    Text="{Binding Performance.AvailabilityText}"
+                    TextColor="{Binding Performance.AvailabilityColor}" />
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Source="ticket_icon.svg">
+                    <Image.Behaviors>
+                        <behaviors:IconTintColorBehavior TintColor="{Binding Performance.AvailabilityColor}" />
+                    </Image.Behaviors>
+                </Image>
+                <Stepper
+                    x:Name="_stepper"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Center"
+                    Increment="1"
+                    Maximum="{Binding MaxQuantity}"
+                    Minimum="0"
+                    Value="{Binding Quantity, Mode=TwoWay}">
+                    <Stepper.Behaviors>
+                        <behaviors:EventToCommandBehavior Command="{Binding StepperValueChangedCommand}" EventName="ValueChanged" />
+                    </Stepper.Behaviors>
+                </Stepper>
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    FontSize="Large"
+                    Text="{Binding Source={x:Reference _stepper}, Path=Value}"
+                    VerticalOptions="Center" />
+                <Label
+                    Grid.Row="2"
+                    Grid.ColumnSpan="3"
+                    FontSize="Medium"
+                    HorizontalOptions="Center"
+                    Text="{Binding BookingStatus}" />
+            </Grid>
 
-        <Grid ColumnDefinitions="*, 4*, *" RowDefinitions="Auto, Auto">
-            <Image
-                Grid.Row="0"
-                Grid.Column="0"
-                Source="ticket_icon.svg">
-                <Image.Behaviors>
-                    <behaviors:IconTintColorBehavior TintColor="{Binding Performance.AvailabilityColor}" />
-                </Image.Behaviors>
-            </Image>
-            <Label
-                Grid.Row="0"
-                Grid.Column="1"
-                FontSize="Medium"
-                Text="{Binding Performance.AvailabilityText}"
-                TextColor="{Binding Performance.AvailabilityColor}" />
-            <Image
-                Grid.Row="0"
-                Grid.Column="2"
-                Source="ticket_icon.svg">
-                <Image.Behaviors>
-                    <behaviors:IconTintColorBehavior TintColor="{Binding Performance.AvailabilityColor}" />
-                </Image.Behaviors>
-            </Image>
-            <Stepper
-                x:Name="_stepper"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                HorizontalOptions="Center"
-                Increment="1"
-                Maximum="{Binding MaxQuantity}"
-                Minimum="0"
-                Value="{Binding Quantity, Mode=TwoWay}">
-                <Stepper.Behaviors>
-                    <behaviors:EventToCommandBehavior Command="{Binding StepperValueChangedCommand}" EventName="ValueChanged" />
-                </Stepper.Behaviors>
-            </Stepper>
-            <Label
-                Grid.Row="1"
-                Grid.Column="3"
-                FontSize="Large"
-                Text="{Binding Source={x:Reference _stepper}, Path=Value}"
-                VerticalOptions="Center" />
-        </Grid>
 
-        <Label
-            FontSize="Medium"
-            HorizontalOptions="Center"
-            Text="{Binding BookingStatus}" />
-
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

@@ -30,10 +30,16 @@ namespace GigGuide.MAUI.ViewModels
         private bool isEmailEditVisible;
 
         [ObservableProperty]
+        private bool isPhoneEditVisible;
+
+        [ObservableProperty]
         private bool isPasswordEditVisible;
 
         [ObservableProperty]
         private string newEmail;
+
+        [ObservableProperty]
+        private string newPhone;
 
         [ObservableProperty]
         private string newPassword;
@@ -45,20 +51,32 @@ namespace GigGuide.MAUI.ViewModels
         private string emailError;
 
         [ObservableProperty]
+        private string phoneError;
+
+        [ObservableProperty]
         private string passwordError;
 
         [ObservableProperty]
-        private bool isErrorVisible;
+        private bool isEmailErrorVisible;
+
+        [ObservableProperty]
+        private bool isPhoneErrorVisible;
 
         [ObservableProperty]
         private bool isPasswordErrorVisible;
 
         public ICommand ChangePasswordCommand { get; }
         public ICommand UpdateEmailCommand { get; }
+        public ICommand UpdatePhoneCommand { get; }
 
         public ICommand ShowEmailEditCommand => new RelayCommand(() =>
         {
             IsEmailEditVisible = true; // Show the email edit section
+        });
+
+        public ICommand ShowPhoneEditCommand => new RelayCommand(() =>
+        {
+            IsPhoneEditVisible = true; // Show the email edit section
         });
 
         public ICommand ShowPasswordEditCommand => new RelayCommand(() =>
@@ -73,9 +91,12 @@ namespace GigGuide.MAUI.ViewModels
 
             ChangePasswordCommand = new RelayCommand(OnChangePassword);
             UpdateEmailCommand = new RelayCommand(OnUpdateEmail);
+            UpdatePhoneCommand = new RelayCommand(OnUpdatePhone);
             IsEmailEditVisible = false; // Initially hidden
+            IsPhoneEditVisible = false; // Initially hidden
             IsPasswordEditVisible = false; // Initially hidden
-            IsErrorVisible = false; // Initially hidden
+            IsEmailErrorVisible = false; // Initially hidden
+            IsPhoneErrorVisible = false; // Initially hidden
             IsPasswordErrorVisible = false; // Initially hidden
         }
 
@@ -84,13 +105,28 @@ namespace GigGuide.MAUI.ViewModels
             if (string.IsNullOrWhiteSpace(NewEmail) || !IsValidEmail(NewEmail))
             {
                 EmailError = "Please enter a valid email.";
-                IsErrorVisible = true;
+                IsEmailErrorVisible = true;
             }
             else
             {
                 // Add logic to update the email in the database or service
                 IsEmailEditVisible = false; // Hide after update
-                IsErrorVisible = false; // Reset error visibility
+                IsEmailErrorVisible = false; // Reset error visibility
+            }
+        }
+
+        private void OnUpdatePhone()
+        {
+            if (string.IsNullOrWhiteSpace(NewPhone) || !IsValidEmail(NewPhone))
+            {
+                PhoneError = "Please enter a valid phone number.";
+                IsPhoneErrorVisible = true;
+            }
+            else
+            {
+                // Add logic to update the email in the database or service
+                IsPhoneEditVisible = false; // Hide after update
+                IsPhoneErrorVisible = false; // Reset error visibility
             }
         }
 
@@ -118,6 +154,11 @@ namespace GigGuide.MAUI.ViewModels
         public ICommand CancelEmailEditCommand => new RelayCommand(() =>
         {
             IsEmailEditVisible = false;
+        });
+
+        public ICommand CancelPhoneEditCommand => new RelayCommand(() =>
+        {
+            IsPhoneEditVisible = false;
         });
 
         public ICommand CancelPasswordEditCommand => new RelayCommand(() =>
