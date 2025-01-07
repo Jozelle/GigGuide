@@ -117,7 +117,7 @@ namespace GigGuide.MAUI.ViewModels
 
         private void OnUpdatePhone()
         {
-            if (string.IsNullOrWhiteSpace(NewPhone) || !IsValidEmail(NewPhone))
+            if (string.IsNullOrWhiteSpace(NewPhone) || !IsValidPhone(NewPhone))
             {
                 PhoneError = "Please enter a valid phone number.";
                 IsPhoneErrorVisible = true;
@@ -149,6 +149,12 @@ namespace GigGuide.MAUI.ViewModels
         {
             var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, emailPattern);
+        }
+
+        private bool IsValidPhone(string phone)
+        {
+            var phonePattern = @"^(([+]467)|00467|07)[02369]*(\d{7})$";
+            return Regex.IsMatch(phone, phonePattern);
         }
 
         public ICommand CancelEmailEditCommand => new RelayCommand(() =>
