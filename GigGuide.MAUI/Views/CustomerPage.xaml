@@ -5,55 +5,105 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:models="clr-namespace:GigGuide.MAUI.Models"
-    Title="">
+    Title="CustomerPage"
+    BackgroundImageSource="Images/background.jpg">
     <ContentPage.Behaviors>
         <behaviors:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
     <ScrollView Margin="10">
+
         <VerticalStackLayout>
-            <!--  Welcome Message  -->
-            <Label
-                FontAttributes="Bold"
-                FontSize="24"
-                HorizontalOptions="Center"
-                Text="{Binding WelcomeMessage}" />
-            <!--  User Settings Section  -->
-            <Label
-                Margin="0,20,0,10"
-                FontAttributes="Bold"
-                FontSize="20"
-                Text="User Settings" />
+            <Border
+                Margin="0,5,0,20"
+                Padding="5"
+                BackgroundColor="FloralWhite"
+                StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout>
+                    <!--  Welcome Message  -->
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="24"
+                        HorizontalOptions="Center"
+                        Text="{Binding WelcomeMessage}" />
+                    <!--  User Settings Section  -->
+                    <Label
+                        Margin="0,20,0,10"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        Text="User Settings" />
 
-            <Label Text="{Binding CurrentCustomer.CustomerFirstName}" />
-            <Label Text="{Binding CurrentCustomer.CustomerLastName}" />
+                    <Label Text="{Binding CurrentCustomer.CustomerFirstName}" />
+                    <Label Text="{Binding CurrentCustomer.CustomerLastName}" />
 
-            <!-- Email Update Section -->
-            <Label Text="Current Email:" FontAttributes="Bold" FontSize="Small" />
-            <Label Text="{Binding CurrentCustomer.CustomerEmail}" x:Name="CurrentEmailLabel" />
+                    <!--  Email Update Section  -->
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        Text="Current Email:" />
+                    <Label x:Name="CurrentEmailLabel" Text="{Binding CurrentCustomer.CustomerEmail}" />
 
-            <Button Text="Update Email" Command="{Binding ShowEmailEditCommand}" />
+                    <Button Command="{Binding ShowEmailEditCommand}" Text="Update Email" />
 
-            <StackLayout IsVisible="{Binding IsEmailEditVisible}">
-                <Entry Text="{Binding NewEmail}" Placeholder="Enter new email" />
-                <Label Text="{Binding EmailError}" TextColor="Red" IsVisible="{Binding IsErrorVisible}" />
-                <Button Text="Save Email" Command="{Binding UpdateEmailCommand}" />
-                <Button Text="Cancel" Command="{Binding CancelEmailEditCommand}" />
-            </StackLayout>
+                    <StackLayout IsVisible="{Binding IsEmailEditVisible}">
+                        <Entry Placeholder="Enter new email" Text="{Binding NewEmail}" />
+                        <Label
+                            IsVisible="{Binding IsEmailErrorVisible}"
+                            Text="{Binding EmailError}"
+                            TextColor="Red" />
+                        <Button Command="{Binding UpdateEmailCommand}" Text="Save Email" />
+                        <Button Command="{Binding CancelEmailEditCommand}" Text="Cancel" />
+                    </StackLayout>
 
-            <Label Text="{Binding CurrentCustomer.CustomerPhone}" />
+                    <!--  Update Phone section  -->
 
-            <!-- Password Change Section -->
-            <Label Text="Change Password" FontAttributes="Bold" FontSize="Small" />
-            <Button Text="Change Password" Command="{Binding ShowPasswordEditCommand}" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        Text="Current Phone number:" />
+                    <Label x:Name="CurrentPhoneLabel" Text="{Binding CurrentCustomer.CustomerPhone}" />
 
-            <StackLayout IsVisible="{Binding IsPasswordEditVisible}">
-                <Entry Text="{Binding NewPassword}" Placeholder="Enter new password" IsPassword="True"/>
-                <Entry Text="{Binding ConfirmPassword}" Placeholder="Confirm new password" IsPassword="True"/>
-                <Label Text="{Binding PasswordError}" TextColor="Red" IsVisible="{Binding IsPasswordErrorVisible}" />
-                <Button Text="Save Password" Command="{Binding ChangePasswordCommand}" />
-                <Button Text="Cancel" Command="{Binding CancelPasswordEditCommand}" />
-            </StackLayout>
+                    <Button Command="{Binding ShowPhoneEditCommand}" Text="Update Phone number" />
+
+                    <StackLayout IsVisible="{Binding IsPhoneEditVisible}">
+                        <Entry Placeholder="Enter new phone number" Text="{Binding NewPhone}" />
+                        <Label
+                            IsVisible="{Binding IsPhoneErrorVisible}"
+                            Text="{Binding PhoneError}"
+                            TextColor="Red" />
+                        <Button Command="{Binding UpdatePhoneCommand}" Text="Save Phone number" />
+                        <Button Command="{Binding CancelPhoneEditCommand}" Text="Cancel" />
+                    </StackLayout>
+
+                    <!--  Password Change Section  -->
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        Text="Change Password" />
+                    <Button Command="{Binding ShowPasswordEditCommand}" Text="Change Password" />
+
+                    <StackLayout IsVisible="{Binding IsPasswordEditVisible}">
+                        <Entry
+                            IsPassword="True"
+                            Placeholder="Enter new password"
+                            Text="{Binding NewPassword}" />
+                        <Entry
+                            IsPassword="True"
+                            Placeholder="Confirm new password"
+                            Text="{Binding ConfirmPassword}" />
+                        <Label
+                            IsVisible="{Binding IsPasswordErrorVisible}"
+                            Text="{Binding PasswordError}"
+                            TextColor="Red" />
+                        <Button Command="{Binding ChangePasswordCommand}" Text="Save Password" />
+                        <Button Command="{Binding CancelPasswordEditCommand}" Text="Cancel" />
+                    </StackLayout>
+
+                </VerticalStackLayout>
+            </Border>
+
+
             <!--  My Bookings Section  -->
+
             <Label
                 Margin="0,20,0,10"
                 FontAttributes="Bold"
@@ -72,6 +122,7 @@
                         <Border
                             Margin="0,5"
                             Padding="5"
+                            BackgroundColor="FloralWhite"
                             StrokeShape="RoundRectangle 10">
                             <StackLayout>
                                 <Label FontSize="Medium" Text="{Binding Performance.PerformanceConcert.ConcertArtist}" />
